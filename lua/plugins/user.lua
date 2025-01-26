@@ -5,33 +5,29 @@
 return {
 
   {
-    "xiyaowong/transparent.nvim"
-  },
-
-  {
-    "sho-87/kanagawa-paper.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("kanagawa-paper").setup({
+      require("kanagawa").setup({
         transparent = true,
         colors = {
           palette = {
-            sumiInk0 = "#16161D",
-            sumiInk1 = "#181820",
-            sumiInk2 = "#1a1a22",
-            sumiInk3 = "#1F1F28",
-            sumiInk4 = "#1A1A27",
-            sumiInk5 = "#363646",
+            dragonBlack0 = "none",
+            dragonBlack1 = "none",
+            dragonBlack2 = "none",
+            dragonBlack3 = "none",
+            dragonBlack4 = "none",
+            dragonBlack5 = "none",
+            waveBlue1 = "none",
+            waveBlue2 = "none",
           },
           theme = {
             ui = {
-              bg_cursorline = "#16161D",
-
               float = {
                 bg = "none",
+                bg_border = "none",
               },
-
               pmenu = {
                 bg = "none",
                 bg_sel = "none",
@@ -39,11 +35,57 @@ return {
                 bg_thumb = "none",
               },
             },
-          },
-        },
+            dragon = {
+              ui = {
+                -- cursorline background
+                bg_p2 = "#1A1A20",
+                -- selection background
+                bg_visual = "#FF0000",
+                bg_sel = "#00FF00"
+              }
+            }
+          }
+        }
       })
     end
   },
+
+  -- {
+  --   "sho-87/kanagawa-paper.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("kanagawa-paper").setup({
+  --       transparent = true,
+  --       colors = {
+  --         palette = {
+  --           sumiInk0 = "#16161D",
+  --           sumiInk1 = "#181820",
+  --           sumiInk2 = "#1a1a22",
+  --           sumiInk3 = "#1F1F28",
+  --           sumiInk4 = "#1A1A27",
+  --           sumiInk5 = "#363646",
+  --         },
+  --         theme = {
+  --           ui = {
+  --             bg_cursorline = "#16161D",
+  --
+  --             float = {
+  --               bg = "none",
+  --             },
+  --
+  --             pmenu = {
+  --               bg = "none",
+  --               bg_sel = "none",
+  --               bg_sbar = "none",
+  --               bg_thumb = "none",
+  --             },
+  --           },
+  --         },
+  --       },
+  --     })
+  --   end
+  -- },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -55,52 +97,27 @@ return {
     },
   },
 
-  ---@module "neominimap.config.meta"
   {
-      "Isrothy/neominimap.nvim",
-      version = "v3.*.*",
-      enabled = true,
-      keys = {
-          { "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
-          -- { "<leader>no", "<cmd>Neominimap on<cr>", desc = "Enable global minimap" },
-          -- { "<leader>nc", "<cmd>Neominimap off<cr>", desc = "Disable global minimap" },
-          -- { "<leader>nr", "<cmd>Neominimap refresh<cr>", desc = "Refresh global minimap" },
-          --
-          -- -- Window-Specific Minimap Controls
-          -- { "<leader>nwt", "<cmd>Neominimap winToggle<cr>", desc = "Toggle minimap for current window" },
-          -- { "<leader>nwr", "<cmd>Neominimap winRefresh<cr>", desc = "Refresh minimap for current window" },
-          -- { "<leader>nwo", "<cmd>Neominimap winOn<cr>", desc = "Enable minimap for current window" },
-          -- { "<leader>nwc", "<cmd>Neominimap winOff<cr>", desc = "Disable minimap for current window" },
-          --
-          -- -- Tab-Specific Minimap Controls
-          -- { "<leader>ntt", "<cmd>Neominimap tabToggle<cr>", desc = "Toggle minimap for current tab" },
-          -- { "<leader>ntr", "<cmd>Neominimap tabRefresh<cr>", desc = "Refresh minimap for current tab" },
-          -- { "<leader>nto", "<cmd>Neominimap tabOn<cr>", desc = "Enable minimap for current tab" },
-          -- { "<leader>ntc", "<cmd>Neominimap tabOff<cr>", desc = "Disable minimap for current tab" },
-          --
-          -- -- Buffer-Specific Minimap Controls
-          -- { "<leader>nbt", "<cmd>Neominimap bufToggle<cr>", desc = "Toggle minimap for current buffer" },
-          -- { "<leader>nbr", "<cmd>Neominimap bufRefresh<cr>", desc = "Refresh minimap for current buffer" },
-          -- { "<leader>nbo", "<cmd>Neominimap bufOn<cr>", desc = "Enable minimap for current buffer" },
-          -- { "<leader>nbc", "<cmd>Neominimap bufOff<cr>", desc = "Disable minimap for current buffer" },
-          --
-          -- ---Focus Controls
-          -- { "<leader>nf", "<cmd>Neominimap focus<cr>", desc = "Focus on minimap" },
-          -- { "<leader>nu", "<cmd>Neominimap unfocus<cr>", desc = "Unfocus minimap" },
-          -- { "<leader>ns", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
+      "petertriho/nvim-scrollbar",
+      dependencies = {
+        "lewis6991/gitsigns.nvim"
       },
       init = function()
-          -- -- The following options are recommended when layout == "float"
-          -- vim.opt.wrap = false
-          -- vim.opt.sidescrolloff = 36 -- Set a large value
-          --
-          --- Put your configuration here
-          ---@type Neominimap.UserConfig
-          vim.g.neominimap = {
-              auto_enable = true,
-          }
-
-          require('neominimap').on()
+        require("scrollbar").setup({
+          handle = {
+              color = "#000000"
+          },
+          -- marks = {
+          --     Search = { color = colors.orange },
+          --     Error = { color = colors.error },
+          --     Warn = { color = colors.warning },
+          --     Info = { color = colors.info },
+          --     Hint = { color = colors.hint },
+          --     Misc = { color = colors.purple },
+          -- })
+        })
+        require('gitsigns').setup()
+        require("scrollbar.handlers.gitsigns").setup()
       end,
   },
 
@@ -126,10 +143,10 @@ return {
       -- build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
 
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    event = "BufEnter",
-  },
+  -- {
+  --   "HiPhish/rainbow-delimiters.nvim",
+  --   event = "BufEnter",
+  -- },
 
   -- -- == Examples of Adding Plugins ==
 

@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason plugins
 
 ---@type LazySpec
@@ -21,8 +19,17 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       ensure_installed = {
-        "stylua",
-        -- add more arguments for adding more null-ls sources
+        "gomodifytags",
+        "gofumpt",
+        "iferr",
+        "impl",
+        "golines",
+        "golangci-lint",
+        "gopls",
+        "typescript-language-server",
+        "svelte-language-server",
+        "lua-language-server",
+        "rust-analyzer"
       },
     },
   },

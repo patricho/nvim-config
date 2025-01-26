@@ -15,8 +15,6 @@
 --   },
 -- }
 
-vim.keymap.set('n', 'r', 'ciw', { desc = 'Change inner word' })
-vim.keymap.set('n', 'R', 'ciW', { desc = 'Change inner Word' })
 vim.keymap.set('n', '§', 'yiw', { desc = 'Yank inner word' })
 vim.keymap.set('n', '°', 'viwp', { desc = 'Paste inner word' })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Show hover information' })
@@ -33,3 +31,20 @@ vim.keymap.set('n', '<leader>fS', vim.lsp.buf.workspace_symbol, { desc = 'Search
 vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = 'x',
+        spacing = 32,
+        source = true,
+    },
+    float = {
+        border = "rounded",
+    },
+    severity_sort = true,
+})
+
+-- Customize colors
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#db4b4b", bg = "#332425" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#e0af68", bg = "#33312c" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0db9d7", bg = "#24313c" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#1abc9c", bg = "#233745" })

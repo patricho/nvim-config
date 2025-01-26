@@ -19,7 +19,14 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
+      virtual_text = {
+        prefix = '●', -- or '●', '▎', or whatever symbol you prefer
+        spacing = 32,  -- Increase this number for more space
+        source = true,  -- Show source of diagnostic
+      },
+      float = {
+        border = "rounded",
+      },
       underline = true,
     },
     -- vim options can be configured here
@@ -65,7 +72,8 @@ return {
         ["<Leader>d"] = { vim.lsp.buf.definition, desc = "Go to definition" },
         ["<Leader>i"] = { vim.lsp.buf.implementation, desc = "Go to implementations" },
         ["c"] = { '"_c' , desc = "Change without yank" },
-
+        ["r"] = { '"_ciw', desc = 'Change inner word' },
+        ["R"] = { '"_ciW', desc = 'Change inner Word' },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {
