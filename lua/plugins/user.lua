@@ -100,12 +100,13 @@ return {
   {
       "petertriho/nvim-scrollbar",
       dependencies = {
-        "lewis6991/gitsigns.nvim"
+        "lewis6991/gitsigns.nvim",
+        "kevinhwang91/nvim-hlslens"
       },
       init = function()
         require("scrollbar").setup({
           handle = {
-              color = "#000000"
+              color = "#444444"
           },
           -- marks = {
           --     Search = { color = colors.orange },
@@ -117,6 +118,9 @@ return {
           -- })
         })
         require('gitsigns').setup()
+        require('hlslens').setup({
+          require("scrollbar.handlers.search").setup()
+        })
         require("scrollbar.handlers.gitsigns").setup()
       end,
   },
