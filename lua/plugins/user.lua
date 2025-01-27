@@ -40,7 +40,7 @@ return {
                 -- cursorline background
                 bg_p2 = "#1A1A20",
                 -- selection background
-                bg_visual = "#FF0000",
+                bg_visual = "#444466",
                 bg_sel = "#00FF00"
               }
             }
@@ -145,6 +145,26 @@ return {
       event = { "CmdlineEnter" },
       ft = { "go", "gomod" },
       -- build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  },
+
+  {
+      "kdheepak/lazygit.nvim",
+      lazy = false,
+      cmd = {
+          "LazyGit",
+          "LazyGitConfig",
+          "LazyGitCurrentFile",
+          "LazyGitFilter",
+          "LazyGitFilterCurrentFile",
+      },
+      -- optional for floating window border decoration
+      dependencies = {
+          "nvim-telescope/telescope.nvim",
+          "nvim-lua/plenary.nvim",
+      },
+      config = function()
+          require("telescope").load_extension("lazygit")
+      end,
   },
 
   -- {

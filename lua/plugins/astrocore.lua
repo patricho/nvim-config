@@ -51,6 +51,10 @@ return {
       -- first key is the mode
       i = {
         ["<C-g>"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
+        ["<C-s>"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
+      },
+      v = {
+        ["Ö"] = { '"8y"8P', desc = "Duplicate selected lines" },
       },
       n = {
         -- second key is the lefthand side of the map
