@@ -11,8 +11,9 @@ return {
     -- Configuration table of features provided by AstroLSP
     features = {
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
+      signature_help = true, -- enable automatic signature help popup globally on startup
     },
     -- customize lsp formatting options
     formatting = {
@@ -30,60 +31,61 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 5000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- gopls = {
-      --   settings = {
-      --     gopls = {
-      --       gofumpt = true,
-      --       codelenses = {
-      --         gc_details = false,
-      --         generate = true,
-      --         regenerate_cgo = true,
-      --         run_govulncheck = true,
-      --         test = true,
-      --         tidy = true,
-      --         upgrade_dependency = true,
-      --         vendor = true,
-      --       },
-      --       hints = {
-      --         assignVariableTypes = true,
-      --         compositeLiteralFields = true,
-      --         compositeLiteralTypes = true,
-      --         constantValues = true,
-      --         functionTypeParameters = false,
-      --         parameterNames = false,
-      --         rangeVariableTypes = true,
-      --       },
-      --       analyses = {
-      --         fieldalignment = true,
-      --         nilness = true,
-      --         unusedparams = true,
-      --         unusedwrite = true,
-      --         useany = true,
-      --         deprecated = true,
-      --         defers = true,
-      --         composites = true,
-      --         bools = true,
-      --         assign = true,
-      --         fillreturns = true,
-      --         httpresponse = true,
-      --         shadow = false,
-      --         unmarshal = true,
-      --       },
-      --       usePlaceholders = false,
-      --       completeUnimported = true,
-      --       staticcheck = true,
-      --       directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-      --       semanticTokens = true,
-      --     },
-      --   },
-      -- },
+      gopls = {
+        settings = {
+          gopls = {
+            gofumpt = true,
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              fieldalignment = true,
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+              deprecated = true,
+              defers = true,
+              composites = true,
+              bools = true,
+              assign = true,
+              fillreturns = true,
+              fillstruct = true,
+              httpresponse = true,
+              shadow = true,
+              unmarshal = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+            semanticTokens = true,
+          },
+        },
+      },
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -144,6 +146,18 @@ return {
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
+
+      -- -- FIXME: workaround for https://github.com/neovim/neovim/issues/28058
+      -- for _, v in pairs(server_opts) do
+      --   if type(v) == "table" and v.workspace then
+      --     v.workspace.didChangeWatchedFiles = {
+      --       dynamicRegistration = false,
+      --       relativePatternSupport = false,
+      --     }
+      --   end
+      -- end
+      --
+      -- require("lspconfig")[server].setup(server_opts)
     end,
   },
 }

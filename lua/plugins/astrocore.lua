@@ -8,7 +8,6 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
-    -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
@@ -17,21 +16,8 @@ return {
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
-    -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-    diagnostics = {
-      virtual_text = {
-        prefix = '●', -- or '●', '▎', or whatever symbol you prefer
-        spacing = 32,  -- Increase this number for more space
-        source = true,  -- Show source of diagnostic
-      },
-      float = {
-        border = "rounded",
-      },
-      underline = true,
-    },
-    -- vim options can be configured here
     options = {
-      opt = { -- vim.opt.<key>
+      opt = {
         tabstop = 4,
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
@@ -39,13 +25,24 @@ return {
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
       },
-      g = { -- vim.g.<key>
+      g = {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
-    -- Mappings can be configured through AstroCore as well.
+    diagnostics = {
+      virtual_text = {
+          prefix = '▎', -- or '●', '▎', or whatever symbol you prefer
+          spacing = 64,  -- Increase this number for more space
+          source = true,  -- Show source of diagnostic
+      },
+      float = {
+          border = "rounded",
+      },
+      underline = true,
+      severity_sort = true,
+    },
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       -- first key is the mode
@@ -54,14 +51,34 @@ return {
         ["<C-s>"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
       },
       v = {
+        ["ga"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
+        ["<Leader>a"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["Ö"] = { '"8y"8P', desc = "Duplicate selected lines" },
       },
       n = {
         -- second key is the lefthand side of the map
 
-        ["<Leader>W"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
+        ["<Leader>noaw"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
         ["<Leader>e"] = { "<cmd>Neotree toggle position=right<cr>", desc = "Toggle Explorer" },
         ["<Leader>E"] = { "<cmd>Neotree toggle position=float<cr>", desc = "Toggle floating Explorer" },
+        ["<Leader>Wj"] = { "<C-w>s", desc = "Create horizontal window split" },
+        ["<Leader>Wl"] = { "<C-w>v", desc = "Create vertical window split" },
+        ["<Leader>Wc"] = { "<C-w>q", desc = "Close current window" },
+        ["<Leader>WC"] = { "<C-w>o", desc = "Close other windows" },
+        ["<Leader>C"] = { function ()
+            -- Get current buffer
+            local current = vim.api.nvim_get_current_buf()
+            
+            -- Get all listed buffers
+            local buffers = vim.api.nvim_list_bufs()
+            
+            -- Loop through buffers and delete all except current
+            for _, buf in ipairs(buffers) do
+                if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
+                    vim.api.nvim_buf_delete(buf, { force = true })
+                end
+            end
+          end, desc = "Close other buffers" },
         ["ö"] = { "dd", desc = "Delete row" },
         ["Ö"] = { 'ma"8yy"8p`a', desc = "Duplicate line" },
         ["Å"] = { "<cmd>GoAltV!<cr>", desc = "Alternate file vertical split" },
@@ -70,6 +87,19 @@ return {
         ["ä"] = { "mao<Esc>`a", desc = "Insert empty line below" },
         ["ga"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["gd"] = { vim.lsp.buf.definition, desc = "Go to definition" },
+        ["gD"] = {
+          function()
+            -- Create a vertical split
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>v', true, true, true), 'n', true)
+
+            -- Call the LSP definition command
+            vim.lsp.buf.definition()
+
+            -- Top the current position
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('ztkk', true, true, true), 'n', true)
+          end,
+          desc = "Close buffer from tabline",
+        },
         ["gi"] = { vim.lsp.buf.implementation, desc = "Go to implementation" },
         ["gs"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
         ["<Leader>a"] = { vim.lsp.buf.code_action, desc = "Go to code action" },

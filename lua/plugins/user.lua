@@ -1,8 +1,13 @@
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
-
 ---@type LazySpec
 return {
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "onsails/lspkind.nvim"
+    },
+    opts = function(_, opts)
+    end
+  },
 
   {
     "rebelot/kanagawa.nvim",
@@ -37,11 +42,12 @@ return {
             },
             dragon = {
               ui = {
-                -- cursorline background
-                bg_p2 = "#1A1A20",
-                -- selection background
-                bg_visual = "#444466",
-                bg_sel = "#00FF00"
+                bg_p2 = "#1A1A20", -- cursorline background
+                bg_visual = "#662200", -- selection background
+
+                nontext    = "#54546D", -- line numbers etc
+                special    = "#54546D", -- current indentation vertical lines
+                whitespace = "#34344D", -- indendation vertical lines
               }
             }
           }
@@ -92,7 +98,7 @@ return {
     opts = {
       window = {
         position = "right",
-        width = 60,
+        width = 70,
       },
     },
   },
@@ -108,20 +114,73 @@ return {
           handle = {
               color = "#444444"
           },
-          -- marks = {
-          --     Search = { color = colors.orange },
-          --     Error = { color = colors.error },
-          --     Warn = { color = colors.warning },
-          --     Info = { color = colors.info },
-          --     Hint = { color = colors.hint },
-          --     Misc = { color = colors.purple },
-          -- })
+          marks = {
+              Search = { color = "#d70000" },
+              Error = { color = "#d70000" },
+              Warn = { color = "#c08f48" },
+              Info = { color = "#0000ff" },
+              Hint = { color = "#1abc9c" },
+              Misc = { color = "#ffa029" },
+          },
+          autocmd = {
+            render = {
+                "BufWinEnter",
+                "TabEnter",
+                "TermEnter",
+                "WinEnter",
+                "CmdwinLeave",
+                "TextChanged",
+                "VimResized",
+                "WinScrolled",
+                "CursorMoved",
+                "CursorMovedI",
+                "CursorHold",
+            },
+            clear = {
+                "BufWinLeave",
+                "TabLeave",
+                "TermLeave",
+                "WinLeave",
+            },
+          },
+          throttle_ms = 500,
         })
-        require('gitsigns').setup()
+
+        require('gitsigns').setup({
+          require("scrollbar.handlers.gitsigns").setup()
+        })
+
         require('hlslens').setup({
           require("scrollbar.handlers.search").setup()
         })
-        require("scrollbar.handlers.gitsigns").setup()
+
+        require("scrollbar.handlers").register("illuminated_word_marks", function(bufnr)
+          -- Get all extmarks in the buffer
+          local markers = vim.api.nvim_buf_get_extmarks(bufnr, -1, 0, -1, { details = true, type = "highlight" })
+          -- local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+          local marks = {}
+
+          for _, marker in ipairs(markers) do
+              local _, line, _, details = unpack(marker)
+
+              if details.hl_group == "IlluminatedWordWrite" or details.hl_group == "IlluminatedWordRead" or details.hl_group == "IlluminatedWordText" then
+                -- local text = lines[line + 1]  -- Lua is 1-based, but nvim_buf_get_lines returns 0-based
+                -- print("line", line, "text", text, details.hl_group, details.hl_mode, details.sign_hl_group, details.number_hl_group, details.line_hl_group, details.cursorline_hl_group)
+
+                table.insert(marks, {
+                  line = line,
+                  text = "",
+                  type = "Misc",
+                  level = 1,
+                })
+              end
+          end
+
+          -- vim.print(vim.inspect(marks))
+
+          return marks
+        end)
       end,
   },
 
