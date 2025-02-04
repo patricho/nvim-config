@@ -79,7 +79,7 @@ return {
                 end
             end
           end, desc = "Close other buffers" },
-        ["ö"] = { "dd", desc = "Delete row" },
+        ["ö"] = { '"_dd', desc = "Delete row" },
         ["Ö"] = { 'ma"8yy"8p`a', desc = "Duplicate line" },
         ["Å"] = { "<cmd>GoAltV!<cr>", desc = "Alternate file vertical split" },
         ["å"] = { "<cmd>GoAlt!<cr>", desc = "Alternate file" },
@@ -102,12 +102,14 @@ return {
         },
         ["gi"] = { vim.lsp.buf.implementation, desc = "Go to implementation" },
         ["gs"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
+        ["gu"] = { vim.lsp.buf.references, desc = 'Go to usages for symbol' },
         ["<Leader>a"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["<Leader>d"] = { vim.lsp.buf.definition, desc = "Go to definition" },
         ["<Leader>i"] = { vim.lsp.buf.implementation, desc = "Go to implementations" },
         ["c"] = { '"_c' , desc = "Change without yank" },
         ["r"] = { '"_ciw', desc = 'Change inner word' },
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
+        ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" }
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {
