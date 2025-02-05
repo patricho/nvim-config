@@ -3,10 +3,147 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "onsails/lspkind.nvim"
+      "onsails/lspkind.nvim",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      -- "hrsh7th/cmp-path",
+      -- "hrsh7th/cmp-cmdline",
+      -- "hrsh7th/cmp-emoji",
+      -- "hrsh7th/cmp-omni",
+      -- "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "hrsh7th/cmp-nvim-lsp-document-symbol",
+      -- "petertriho/cmp-git",
+      -- "rafamadriz/friendly-snippets",
+      -- "rcarriga/cmp-dap",
+      -- "SergioRibera/cmp-dotenv",
+      -- "Snikimonkd/cmp-go-pkgs",
+      -- "David-Kunz/cmp-npm",
+      -- "davidsierradz/cmp-conventionalcommits",
     },
-    opts = function(_, opts)
-    end
+    config = function(plugin, opts)
+      require "astronvim.plugins.configs.cmp"(plugin, opts)
+
+      local cmp = require("cmp")
+      local compare = require('cmp.config.compare')
+
+      local kind_icons = {
+          Text = "",
+          Method = "󰆧",
+          Function = "󰊕",
+          Constructor = "",
+          Field = "󰇽",
+          Variable = "󰂡",
+          Class = "󰠱",
+          Interface = "",
+          Module = "",
+          Property = "󰜢",
+          Unit = "",
+          Value = "󰎠",
+          Enum = "",
+          Keyword = "󰌋",
+          Snippet = "",
+          Color = "󰏘",
+          File = "󰈙",
+          Reference = "",
+          Folder = "󰉋",
+          EnumMember = "",
+          Constant = "󰏿",
+          Struct = "",
+          Event = "",
+          Operator = "󰆕",
+          TypeParameter = "󰅲",
+      }
+
+      cmp.setup({
+          snippet = {
+              -- REQUIRED - you must specify a snippet engine
+              expand = function(args)
+                  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                  require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                  -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+                  -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                  -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+                  -- For `mini.snippets` users:
+                  -- local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+                  -- insert({ body = args.body }) -- Insert at cursor
+                  -- cmp.resubscribe({ "TextChangedI", "TextChangedP" })
+                  -- require("cmp.config").set_onetime({ sources = {} })
+              end,
+          },
+
+          sorting = {
+              priority_weight = 2,
+              comparators = {
+                  compare.scopes,
+                  compare.score,
+                  compare.locality,
+                  compare.offset,
+                  compare.exact,
+                  compare.recently_used,
+                  compare.kind,
+                  compare.sort_text,
+                  compare.length,
+                  compare.order,
+              },
+          },
+
+          sources = cmp.config.sources({
+              { name = 'nvim_lsp' },
+              { name = 'buffer' },
+              { name = 'luasnip' },
+          }),
+
+          window = {
+              completion = cmp.config.window.bordered(),
+              documentation = cmp.config.window.bordered()
+          },
+
+          formatting = {
+              fields = { 'abbr', 'kind', 'menu' },
+              format = function(entry, vim_item)
+                  vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+	                  
+                  vim_item.menu = ({
+                      buffer = "[Buffer]",
+                      nvim_lsp = "[LSP]",
+                      luasnip = "[LuaSnip]",
+                      nvim_lua = "[Lua]",
+                      latex_symbols = "[LaTeX]",
+                  })[entry.source.name]
+                      
+                  return vim_item
+              end
+          },
+
+          -- -- Configure source priorities (higher number = higher priority)
+          -- sources = cmp.config.sources({
+          --     { name = 'nvim_lsp', priority = 1000, max_item_count = 50 },
+          -- }),
+
+          docs = {
+              max_height = 40,
+              max_width = 180,
+              border = 'rounded',
+          },
+
+          -- Show completion details and documentation automatically
+          view = {
+              docs = {
+                  auto_open = true,
+              }
+          },
+
+          -- Keep the documentation window visible even after completion
+          experimental = {
+              ghost_text = true,
+          },
+      })
+
+    end,
+    -- opts = function(_, opts)
+    -- end
   },
 
   {
@@ -267,16 +404,19 @@ return {
   -- -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
 
-  -- -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   config = function(plugin, opts)
-  --     require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-  --     -- add more custom luasnip configuration such as filetype extend or custom snippets
-  --     local luasnip = require "luasnip"
-  --     luasnip.filetype_extend("javascript", { "javascriptreact" })
-  --   end,
-  -- },
+  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  {
+    "L3MON4D3/LuaSnip",
+    config = function(plugin, opts)
+      require "astronvim.plugins.configs.luasnip"(plugin, opts)
+      -- add more custom luasnip configuration such as filetype extend or custom snippets
+      local luasnip = require "luasnip"
+      luasnip.filetype_extend("javascript", { "javascriptreact" })
+
+      local config_path = vim.fn.stdpath("config")
+      require("luasnip.loaders.from_lua").load({ paths = {config_path .. "/snippets"} })
+    end,
+  },
 
   -- {
   --   "windwp/nvim-autopairs",
