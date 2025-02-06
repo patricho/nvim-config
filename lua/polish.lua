@@ -1,6 +1,7 @@
 -- TODO: move to astrocore.lua
 vim.keymap.set('n', '§', 'yiw', { desc = 'Yank inner word' })
 vim.keymap.set('n', '°', '"_diwP', { desc = 'Paste inner word' })
+vim.keymap.set('n', '½', '"_diwP', { desc = 'Paste inner word' })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Show hover information' })
 vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = 'Show hover information' })
 vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<cr>', { desc = 'Previous buffer' })
@@ -14,7 +15,7 @@ vim.keymap.set('n', '<leader>fS', vim.lsp.buf.workspace_symbol, { desc = 'Search
 vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 
-vim.o.scrolloff = 8
+vim.o.scrolloff = 6
 vim.cmd("packadd cfilter")
 
 vim.diagnostic.config({

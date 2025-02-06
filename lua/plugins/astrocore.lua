@@ -45,7 +45,6 @@ return {
     },
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
-      -- first key is the mode
       i = {
         ["<C-g>"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
         ["<C-s>"] = { vim.lsp.buf.signature_help, desc = "Go to signature help" },
@@ -56,8 +55,6 @@ return {
         ["Ö"] = { '"8y"8P', desc = "Duplicate selected lines" },
       },
       n = {
-        -- second key is the lefthand side of the map
-
         ["<Leader>noaw"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
         ["<Leader>e"] = { "<cmd>Neotree toggle position=right<cr>", desc = "Toggle Explorer" },
         ["<Leader>E"] = { "<cmd>Neotree toggle position=float<cr>", desc = "Toggle floating Explorer" },

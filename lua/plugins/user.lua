@@ -258,6 +258,9 @@ return {
               Info = { color = "#0000ff" },
               Hint = { color = "#1abc9c" },
               Misc = { color = "#ffa029" },
+              GitDelete = {
+                text = "┆",
+              },
           },
           autocmd = {
             render = {
