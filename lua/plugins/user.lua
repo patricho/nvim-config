@@ -15,7 +15,6 @@ return {
       -- "hrsh7th/cmp-nvim-lsp-signature-help",
       -- "hrsh7th/cmp-nvim-lsp-document-symbol",
       -- "petertriho/cmp-git",
-      -- "rafamadriz/friendly-snippets",
       -- "rcarriga/cmp-dap",
       -- "SergioRibera/cmp-dotenv",
       -- "Snikimonkd/cmp-go-pkgs",
@@ -410,6 +409,9 @@ return {
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
+    dependencies = {
+        "rafamadriz/friendly-snippets"
+    },
     config = function(plugin, opts)
       require "astronvim.plugins.configs.luasnip"(plugin, opts)
       -- add more custom luasnip configuration such as filetype extend or custom snippets
@@ -418,6 +420,7 @@ return {
 
       local config_path = vim.fn.stdpath("config")
       require("luasnip.loaders.from_lua").load({ paths = {config_path .. "/snippets"} })
+      require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
 
