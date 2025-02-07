@@ -53,6 +53,9 @@ return {
         ["ga"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["<Leader>a"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["Ö"] = { '"8y"8P', desc = "Duplicate selected lines" },
+        ["p"] = { '"_dP', desc = "Paste over selection without yanking" },
+        ["J"] = { ":m '>+1<CR>gv=gv", desc = "Move selected lines down" },
+        ["K"] = { ":m '<-2<CR>gv=gv", desc = "Move selected lines up" },
       },
       n = {
         ["<Leader>noaw"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
@@ -65,10 +68,10 @@ return {
         ["<Leader>C"] = { function ()
             -- Get current buffer
             local current = vim.api.nvim_get_current_buf()
-            
+
             -- Get all listed buffers
             local buffers = vim.api.nvim_list_bufs()
-            
+
             -- Loop through buffers and delete all except current
             for _, buf in ipairs(buffers) do
                 if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
@@ -104,9 +107,11 @@ return {
         ["<Leader>d"] = { vim.lsp.buf.definition, desc = "Go to definition" },
         ["<Leader>i"] = { vim.lsp.buf.implementation, desc = "Go to implementations" },
         ["c"] = { '"_c' , desc = "Change without yank" },
+        ["C"] = { '"_C' , desc = "Change without yank" },
         ["r"] = { '"_ciw', desc = 'Change inner word' },
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
-        ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" }
+        ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" },
+        ["<Leader>gB"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {

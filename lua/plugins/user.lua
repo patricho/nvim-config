@@ -192,43 +192,6 @@ return {
     end
   },
 
-  -- {
-  --   "sho-87/kanagawa-paper.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("kanagawa-paper").setup({
-  --       transparent = true,
-  --       colors = {
-  --         palette = {
-  --           sumiInk0 = "#16161D",
-  --           sumiInk1 = "#181820",
-  --           sumiInk2 = "#1a1a22",
-  --           sumiInk3 = "#1F1F28",
-  --           sumiInk4 = "#1A1A27",
-  --           sumiInk5 = "#363646",
-  --         },
-  --         theme = {
-  --           ui = {
-  --             bg_cursorline = "#16161D",
-  --
-  --             float = {
-  --               bg = "none",
-  --             },
-  --
-  --             pmenu = {
-  --               bg = "none",
-  --               bg_sel = "none",
-  --               bg_sbar = "none",
-  --               bg_thumb = "none",
-  --             },
-  --           },
-  --         },
-  --       },
-  --     })
-  --   end
-  -- },
-
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -365,47 +328,6 @@ return {
       end,
   },
 
-  -- {
-  --   "HiPhish/rainbow-delimiters.nvim",
-  --   event = "BufEnter",
-  -- },
-
-  -- -- == Examples of Adding Plugins ==
-
-  -- "andweeb/presence.nvim",
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "BufRead",
-  --   config = function() require("lsp_signature").setup() end,
-  -- },
-
-  -- -- == Examples of Overriding Plugins ==
-
-  -- -- customize alpha options
-  -- {
-  --   "goolord/alpha-nvim",
-  --   opts = function(_, opts)
-  --     -- customize the dashboard header
-  --     opts.section.header.val = {
-  --       " █████  ███████ ████████ ██████   ██████",
-  --       "██   ██ ██         ██    ██   ██ ██    ██",
-  --       "███████ ███████    ██    ██████  ██    ██",
-  --       "██   ██      ██    ██    ██   ██ ██    ██",
-  --       "██   ██ ███████    ██    ██   ██  ██████",
-  --       " ",
-  --       "    ███    ██ ██    ██ ██ ███    ███",
-  --       "    ████   ██ ██    ██ ██ ████  ████",
-  --       "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-  --       "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-  --       "    ██   ████   ████   ██ ██      ██",
-  --     }
-  --     return opts
-  --   end,
-  -- },
-
-  -- -- You can disable default plugins as follows:
-  -- { "max397574/better-escape.nvim", enabled = false },
-
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
@@ -424,33 +346,176 @@ return {
     end,
   },
 
-  -- {
-  --   "windwp/nvim-autopairs",
-  --   config = function(plugin, opts)
-  --     require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
-  --     -- add more custom autopairs configuration such as custom rules
-  --     local npairs = require "nvim-autopairs"
-  --     local Rule = require "nvim-autopairs.rule"
-  --     local cond = require "nvim-autopairs.conds"
-  --     npairs.add_rules(
-  --       {
-  --         Rule("$", "$", { "tex", "latex" })
-  --           -- don't add a pair if the next character is %
-  --           :with_pair(cond.not_after_regex "%%")
-  --           -- don't add a pair if  the previous character is xxx
-  --           :with_pair(
-  --             cond.not_before_regex("xxx", 3)
-  --           )
-  --           -- don't move right when repeat character
-  --           :with_move(cond.none())
-  --           -- don't delete if the next character is xx
-  --           :with_del(cond.not_after_regex "xx")
-  --           -- disable adding a newline when you press <cr>
-  --           :with_cr(cond.none()),
-  --       },
-  --       -- disable for .vim files, but it work for another filetypes
-  --       Rule("a", "a", "-vim")
-  --     )
-  --   end,
-  -- },
+  {
+    -- https://docs.astronvim.com/recipes/status/#replicate-visual-studio-code-winbar
+    "rebelot/heirline.nvim",
+    dependencies = {
+        "f-person/git-blame.nvim",
+        -- {
+        --     "AstroNvim/astroui",
+        --     ---@type AstroUIOpts
+        --     opts = {
+        --         icons = {
+        --             Clock = "",
+        --         },
+        --     },
+        -- },
+    },
+    opts = function(_, opts)
+        local status = require("astroui.status")
+        local gitblame = require('gitblame')
+
+        opts.statusline = {
+            hl = { fg = "fg", bg = "bg" },
+            status.component.mode(),
+            status.component.git_branch(),
+            status.component.git_diff(),
+            status.component.diagnostics(),
+            status.component.fill(),
+            status.component.cmd_info(),
+            status.component.fill(),
+            status.component.builder({
+                {
+                    condition = gitblame.is_blame_text_available,
+                    provider = gitblame.get_current_blame_text,
+                    update = {
+                        'CursorMoved',
+                        'CursorMovedI',
+                        'CursorHold',
+                    }
+                },
+                hl = { fg = "#808080" },
+                padding = { right = 2 }
+            }),
+            status.component.file_info(),
+            status.component.lsp(),
+            status.component.virtual_env(),
+            status.component.treesitter(),
+            status.component.builder({
+                -- %l = current line number
+                -- %L = number of lines in the buffer
+                -- %c = column number
+                -- %P = percentage through file of displayed window
+                provider = " 󰦨 %l:%c ",
+                hl = { fg = "#606060" },
+             }),
+            -- status.component.nav({ padding = { right = 1 } }),
+            status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, }),
+
+            -- -- Create a custom component to display the time
+            -- status.component.builder({
+            --     {
+            --         provider = function()
+            --             local time = os.date("%H:%M")
+            --             ---@cast time string
+            --             return status.utils.stylize(time, {
+            --                 icon = { kind = "Clock", padding = { left = 1, right = 1 } }, -- use our new clock icon
+            --                 padding = { right = 1 }, -- pad the right side so it's not cramped
+            --             })
+            --         end,
+            --     },
+            --     update = { -- update should happen when the mode has changed as well as when the time has changed
+            --         "User", -- We can use the User autocmd event space to tell the component when to update
+            --         "ModeChanged",
+            --         callback = vim.schedule_wrap(function(_, args)
+            --             if -- update on user UpdateTime event and mode change
+            --             (args.event == "User" and args.match == "UpdateTime")
+            --             or (args.event == "ModeChanged" and args.match:match(".*:.*"))
+            --             then
+            --                 vim.cmd.redrawstatus()
+            --             end
+            --         end),
+            --     },
+            --     hl = status.hl.get_attributes("mode"), -- highlight based on mode attributes
+            --     surround = { separator = "right", color = status.hl.mode_bg }, -- background highlight based on mode
+            -- }),
+        }
+
+        -- -- Now that we have the component, we need a timer to emit the User UpdateTime event
+        -- vim.uv.new_timer():start(
+        --     (60 - tonumber(os.date("%S"))) * 1000, -- offset timer based on current seconds past the minute
+        --     60000, -- update every 60 seconds
+        --     vim.schedule_wrap(function()
+        --         vim.api.nvim_exec_autocmds(
+        --             "User",
+        --             { pattern = "UpdateTime", modeline = false }
+        --         )
+        --     end)
+        -- )
+
+        opts.winbar = {
+            -- store the current buffer number
+            init = function(self)
+                self.bufnr = vim.api.nvim_get_current_buf()
+            end,
+
+            fallthrough = false, -- pick the correct winbar based on condition
+
+            -- inactive winbar
+            {
+                condition = function()
+                    return not status.condition.is_active()
+                end,
+                -- show the path to the file relative to the working directory
+                status.component.separated_path({
+                path_func = status.provider.filename({ modify = ":.:h" }),
+                }),
+                -- add the file name and icon
+                status.component.file_info({
+                    file_icon = {
+                        hl = status.hl.file_icon("winbar"),
+                        padding = { left = 0 },
+                    },
+                    filename = {},
+                    filetype = false,
+                    file_modified = false,
+                    file_read_only = false,
+                    hl = status.hl.get_attributes("winbarnc", true),
+                    surround = false,
+                    update = "BufEnter",
+                }),
+            },
+
+            -- active winbar
+            {
+                -- show the path to the file relative to the working directory
+                status.component.separated_path({
+                    path_func = status.provider.filename({ modify = ":.:h" }),
+                }),
+
+                -- add the file name and icon
+                status.component.file_info({ -- add file_info to breadcrumbs
+                    file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
+                    filename = {},
+                    filetype = false,
+                    file_modified = false,
+                    file_read_only = false,
+                    hl = status.hl.get_attributes("winbar", true),
+                    surround = false,
+                    update = "BufEnter",
+                }),
+
+                -- show the breadcrumbs
+                status.component.breadcrumbs({
+                    icon = { hl = true },
+                    hl = status.hl.get_attributes("winbar", true),
+                    prefix = true,
+                    padding = { left = 0 },
+                }),
+            },
+        }
+    end,
+  },
+
+  {
+    "f-person/git-blame.nvim",
+    event = "VeryLazy",
+    opts = {
+        enabled = true,
+        message_template = " <summary> [<author> <date>]",
+        date_format = "%Y-%m-%d",
+        message_when_not_committed = "",
+        display_virtual_text = 0, -- Disable virtual text, just show in heirline
+    },
+  }
 }

@@ -43,6 +43,12 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#e0af68" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0db9d7" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#1abc9c" })
 
+-- Status line mode indication
+vim.api.nvim_set_hl(0, "HeirlineNormal", { fg = "#000000", bg = "#89b4fa" })
+vim.api.nvim_set_hl(0, "HeirlineInsert", { fg = "#000000", bg = "#a6e3a1" })
+vim.api.nvim_set_hl(0, "HeirlineVisual", { fg = "#000000", bg = "#fe8019" })
+vim.api.nvim_set_hl(0, "HeirlineReplace", { fg = "#ffffff", bg = "#d70000" })
+
 -- Search colors
 vim.api.nvim_set_hl(0, "Search", { fg = '#d70000' })
 vim.api.nvim_set_hl(0, "CurSearch", { fg = '#d70000', bold = true })
