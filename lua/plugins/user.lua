@@ -183,7 +183,7 @@ return {
 
                 nontext    = "#54546D", -- line numbers etc
                 special    = "#54546D", -- current indentation vertical lines
-                whitespace = "#34344D", -- indendation vertical lines
+                whitespace = "#24242D", -- indendation vertical lines
               }
             }
           }
@@ -217,7 +217,7 @@ return {
               Search = { color = "#d70000" },
               Error = { color = "#d70000" },
               Warn = { color = "#c08f48" },
-              Info = { color = "#0000ff" },
+              Info = { color = "#1d79b7" },
               Hint = { color = "#1abc9c" },
               Misc = { color = "#ffa029" },
               GitDelete = {

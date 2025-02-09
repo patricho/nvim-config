@@ -21,7 +21,7 @@ vim.cmd("packadd cfilter")
 vim.diagnostic.config({
     virtual_text = {
         prefix = '●', -- or '●', '▎', or whatever symbol you prefer
-        spacing = 32,  -- Increase this number for more space
+        spacing = 16,  -- Increase this number for more space
         source = true,  -- Show source of diagnostic
     },
     float = {
@@ -38,10 +38,13 @@ vim.cmd("highlight rCursor guibg=#d70000 ctermbg=124")
 vim.cmd("set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,i:blinkwait1000-blinkon500-blinkoff250")
 
 -- Diagnostic colors
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#db4b4b" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#e0af68" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0db9d7" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#1abc9c" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = "#db4b4b", sp = "#ff0000", underline = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { underline = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#9b2b2b", italic = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#a06f28", italic = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0d6987", italic = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#007c5c", italic = true })
 
 -- Status line mode indication
 vim.api.nvim_set_hl(0, "HeirlineNormal", { fg = "#000000", bg = "#89b4fa" })
