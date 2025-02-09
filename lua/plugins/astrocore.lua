@@ -30,23 +30,23 @@ return {
     },
     diagnostics = {
       virtual_text = {
-          prefix = '▎', -- or '●', '▎', or whatever symbol you prefer
-          spacing = 64,  -- Increase this number for more space
-          source = true,  -- Show source of diagnostic
+        prefix = '▎', -- or '●', '▎', or whatever symbol you prefer
+        spacing = 64,  -- Increase this number for more space
+        source = true,  -- Show source of diagnostic
       },
       float = {
-          border = "rounded",
+        border = "rounded",
       },
       underline = true,
       severity_sort = true,
     },
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
-      autopairs = true, -- enable autopairs at start
-      cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
-      highlighturl = true, -- highlight URLs at start
-      notifications = true, -- enable notifications at start
+      autopairs = true,
+      cmp = true,
+      diagnostics_mode = 3, -- 0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on
+      highlighturl = true,
+      notifications = true,
     },
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
@@ -59,8 +59,8 @@ return {
         ["<Leader>a"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["Ö"] = { '"8y"8P', desc = "Duplicate selected lines" },
         ["p"] = { '"_dP', desc = "Paste over selection without yanking" },
-        ["J"] = { ":m '>+1<CR>gv=gv", desc = "Move selected lines down" },
-        ["K"] = { ":m '<-2<CR>gv=gv", desc = "Move selected lines up" },
+        ["J"] = { ":move '>+1<CR>V'[=gv", desc = "Move selected lines down" },
+        ["K"] = { ":move '<-2<CR>V'[=gv", desc = "Move selected lines up" },
       },
       n = {
         ["<Leader>noaw"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
@@ -71,11 +71,11 @@ return {
         ["<Leader>Wc"] = { "<C-w>q", desc = "Close current window" },
         ["<Leader>WC"] = { "<C-w>o", desc = "Close other windows" },
         ["<Leader>C"] = { function ()
-            -- Get current buffer
-            local current = vim.api.nvim_get_current_buf()
+          -- Get current buffer
+          local current = vim.api.nvim_get_current_buf()
 
-            -- Get all listed buffers
-            local buffers = vim.api.nvim_list_bufs()
+          -- Get all listed buffers
+          local buffers = vim.api.nvim_list_bufs()
 
             -- Loop through buffers and delete all except current
             for _, buf in ipairs(buffers) do
