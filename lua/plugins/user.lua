@@ -367,7 +367,7 @@ return {
 
         opts.statusline = {
             hl = { fg = "fg", bg = "bg" },
-            status.component.mode(),
+            status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, }),
             status.component.git_branch(),
             status.component.git_diff(),
             status.component.diagnostics(),
@@ -400,7 +400,7 @@ return {
                 hl = { fg = "#606060" },
              }),
             -- status.component.nav({ padding = { right = 1 } }),
-            status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, }),
+            status.component.mode(),
 
             -- -- Create a custom component to display the time
             -- status.component.builder({
