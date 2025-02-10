@@ -28,18 +28,6 @@ return {
         },
       },
     },
-    diagnostics = {
-      virtual_text = {
-        prefix = '▎', -- or '●', '▎', or whatever symbol you prefer
-        spacing = 64,  -- Increase this number for more space
-        source = true,  -- Show source of diagnostic
-      },
-      float = {
-        border = "rounded",
-      },
-      underline = true,
-      severity_sort = true,
-    },
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true,
@@ -77,13 +65,13 @@ return {
           -- Get all listed buffers
           local buffers = vim.api.nvim_list_bufs()
 
-            -- Loop through buffers and delete all except current
-            for _, buf in ipairs(buffers) do
-                if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
-                    vim.api.nvim_buf_delete(buf, { force = true })
-                end
+          -- Loop through buffers and delete all except current
+          for _, buf in ipairs(buffers) do
+            if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
+              vim.api.nvim_buf_delete(buf, { force = true })
             end
-          end, desc = "Close other buffers" },
+          end
+        end, desc = "Close other buffers" },
         ["ö"] = { '"_dd', desc = "Delete row" },
         ["Ö"] = { 'ma"8yy"8p`a', desc = "Duplicate line" },
         ["Å"] = { "<cmd>GoAltV!<cr>", desc = "Alternate file vertical split" },

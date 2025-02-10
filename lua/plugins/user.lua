@@ -364,15 +364,26 @@ return {
     opts = function(_, opts)
         local status = require("astroui.status")
         local gitblame = require('gitblame')
+        local section = { "", "" }
 
         opts.statusline = {
-            hl = { fg = "fg", bg = "bg" },
-            status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, }),
-            status.component.git_branch(),
-            status.component.git_diff(),
-            status.component.diagnostics(),
+            hl = { fg = "fg", bg = "bg" }, -- #000000" },
+            status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
+            status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#303030" }}, surround = { color = "#303030", separator = section } }),
+            status.component.git_diff({ surround = { separator = section, color = "#303030" }, padding = { right = 1 } }),
+            status.component.diagnostics({
+                ERROR = { icon = { kind = "DiagnosticError", padding = { left = 1, right = 1 } } },
+                WARN = { icon = { kind = "DiagnosticWarn", padding = { left = 1, right = 1 } } },
+                INFO = { icon = { kind = "DiagnosticInfo", padding = { left = 1, right = 1 } } },
+                HINT = { icon = { kind = "DiagnosticHint", padding = { left = 1, right = 1 } } },
+                surround = { separator = section, color = "#303030" },
+                padding = { right = 1 }
+            }),
             status.component.fill(),
-            status.component.cmd_info(),
+            status.component.cmd_info({
+                padding = { left = 1, right = 1 },
+                surround = { separator = section, color = "#303030" }
+            }),
             status.component.fill(),
             status.component.builder({
                 {
@@ -384,23 +395,35 @@ return {
                         'CursorHold',
                     }
                 },
-                hl = { fg = "#808080" },
-                padding = { right = 2 }
+                hl = { bg = "#303030", fg = "#808080" },
+                surround = { condition = gitblame.is_blame_text_available, separator = section, color = "#303030" },
+                padding = { left = 1, right = 1 }
             }),
-            status.component.file_info(),
-            status.component.lsp(),
-            status.component.virtual_env(),
-            status.component.treesitter(),
+            status.component.file_info({
+                file_icon = { hl = { fg = "fg" }, padding = { left = 0 } },
+                padding = { left = 1, right = 1 },
+                surround = { separator = section, color ="#303030" }
+            }),
+            status.component.lsp({
+                padding = { left = 1, right = 1 },
+                surround = { separator = section, color ="#303030" },
+                lsp_client_names = { icon = { padding = { left = 0, right = 1 } } }
+            }),
+            status.component.treesitter({
+                padding = { left = 1, right = 1 },
+                surround = { separator = section, color = "#303030" }
+            }),
             status.component.builder({
                 -- %l = current line number
                 -- %L = number of lines in the buffer
                 -- %c = column number
                 -- %P = percentage through file of displayed window
                 provider = " 󰦨 %l:%c ",
-                hl = { fg = "#606060" },
+                hl = { bg = "#303030", fg = "#808080" },
+                surround = { separator = section, color = "#303030" },
              }),
             -- status.component.nav({ padding = { right = 1 } }),
-            status.component.mode(),
+            status.component.mode({ padding = { left = 1, right = 1 }, surround = { separator = { "", "" } } }),
 
             -- -- Create a custom component to display the time
             -- status.component.builder({
@@ -444,6 +467,8 @@ return {
         -- )
 
         opts.winbar = {
+            -- hl = { bg = "#000000" },
+
             -- store the current buffer number
             init = function(self)
                 self.bufnr = vim.api.nvim_get_current_buf()
@@ -458,7 +483,7 @@ return {
                 end,
                 -- show the path to the file relative to the working directory
                 status.component.separated_path({
-                path_func = status.provider.filename({ modify = ":.:h" }),
+                    path_func = status.provider.filename({ modify = ":.:h" }),
                 }),
                 -- add the file name and icon
                 status.component.file_info({
@@ -470,7 +495,7 @@ return {
                     filetype = false,
                     file_modified = false,
                     file_read_only = false,
-                    hl = status.hl.get_attributes("winbarnc", true),
+                    hl = status.hl.get_attributes("winbarnc"),
                     surround = false,
                     update = "BufEnter",
                 }),
@@ -490,7 +515,7 @@ return {
                     filetype = false,
                     file_modified = false,
                     file_read_only = false,
-                    hl = status.hl.get_attributes("winbar", true),
+                    hl = status.hl.get_attributes("winbar"),
                     surround = false,
                     update = "BufEnter",
                 }),
@@ -498,10 +523,13 @@ return {
                 -- show the breadcrumbs
                 status.component.breadcrumbs({
                     icon = { hl = true },
-                    hl = status.hl.get_attributes("winbar", true),
+                    hl = status.hl.get_attributes("winbar"),
                     prefix = true,
                     padding = { left = 0 },
                 }),
+                -- status.component.fill({
+                --     hl = { bg = "#000000" }
+                -- }),
             },
         }
     end,
