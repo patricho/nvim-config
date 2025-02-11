@@ -51,7 +51,11 @@ return {
         ["K"] = { ":move '<-2<CR>V'[=gv", desc = "Move selected lines up" },
       },
       n = {
-        ["<Leader>noaw"] = { "<cmd>noa w<cr>", desc = "Save without formatting" },
+        ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
+        ["<Leader>qn"] = { "<cmd>cnext<cr>", desc = "Next quickfix item" },
+        ["<Leader>qp"] = { "<cmd>cprev<cr>", desc = "Previous quickfix item" },
+        ["<Leader>qc"] = { "<cmd>cclose<cr>", desc = "Close quickfix window" },
+        ["<Leader>qo"] = { "<cmd>copen<cr>", desc = "Open quickfix window" },
         ["<Leader>e"] = { "<cmd>Neotree toggle position=right<cr>", desc = "Toggle Explorer" },
         ["<Leader>E"] = { "<cmd>Neotree toggle position=float<cr>", desc = "Toggle floating Explorer" },
         ["<Leader>Wj"] = { "<C-w>s", desc = "Create horizontal window split" },
@@ -105,6 +109,7 @@ return {
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
         ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" },
         ["<Leader>gB"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
+        ["<Leader>gD"] = { "<C-w>h<cmd>q<cr>", desc = "Close diff view" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {
