@@ -14,6 +14,7 @@ vim.keymap.set('n', '<leader>fs', require("telescope.builtin").lsp_document_symb
 vim.keymap.set('n', '<leader>fS', vim.lsp.buf.workspace_symbol, { desc = 'Search workspace symbols' })
 vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
+vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
 vim.o.scrolloff = 6
 vim.cmd("packadd cfilter")
@@ -51,6 +52,8 @@ vim.api.nvim_set_hl(0, "HeirlineNormal", { fg = "#000000", bg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "HeirlineInsert", { fg = "#000000", bg = "#a6e3a1" })
 vim.api.nvim_set_hl(0, "HeirlineVisual", { fg = "#000000", bg = "#fe8019" })
 vim.api.nvim_set_hl(0, "HeirlineReplace", { fg = "#ffffff", bg = "#d70000" })
+
+vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#fe8019", bg ="#500f08" })
 
 -- Search colors
 vim.api.nvim_set_hl(0, "Search", { fg = '#d70000' })

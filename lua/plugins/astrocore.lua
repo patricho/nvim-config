@@ -27,6 +27,14 @@ return {
           end,
         },
       },
+      highlightyank = {
+        {
+          event = "TextYankPost",
+          desc = "Highlight yanked text",
+          pattern = "*",
+          callback = function() (vim.hl or vim.highlight).on_yank({ higroup = 'YankHighlight', timeout = 2000 }) end,
+        },
+      },
     },
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
@@ -51,11 +59,15 @@ return {
         ["K"] = { ":move '<-2<CR>V'[=gv", desc = "Move selected lines up" },
       },
       n = {
+        ["-"] = { "/", desc = "Search forwards" },
+        ["_"] = { function() require("flash").jump() end, desc = "Flash jump" },
+        ["<Leader>fj"] = { function() require("flash").jump() end, desc = "Flash jump" },
         ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
         ["<Leader>qn"] = { "<cmd>cnext<cr>", desc = "Next quickfix item" },
         ["<Leader>qp"] = { "<cmd>cprev<cr>", desc = "Previous quickfix item" },
         ["<Leader>qc"] = { "<cmd>cclose<cr>", desc = "Close quickfix window" },
         ["<Leader>qo"] = { "<cmd>copen<cr>", desc = "Open quickfix window" },
+        ["<Leader>qs"] = { "<cmd>vimgrep // %<cr><cr><cmd>copen<cr><C-w>k", desc = "Send previous search's results to quickfix" },
         ["<Leader>e"] = { "<cmd>Neotree toggle position=right<cr>", desc = "Toggle Explorer" },
         ["<Leader>E"] = { "<cmd>Neotree toggle position=float<cr>", desc = "Toggle floating Explorer" },
         ["<Leader>Wj"] = { "<C-w>s", desc = "Create horizontal window split" },
@@ -105,6 +117,10 @@ return {
         ["<Leader>i"] = { vim.lsp.buf.implementation, desc = "Go to implementations" },
         ["c"] = { '"_c' , desc = "Change without yank" },
         ["C"] = { '"_C' , desc = "Change without yank" },
+        ["s"] = { '"_s' , desc = "Change without yank" },
+        ["S"] = { '"_S' , desc = "Change without yank" },
+        ["x"] = { '"_x' , desc = "Delete without yank" },
+        ["X"] = { '"_X' , desc = "Delete without yank" },
         ["r"] = { '"_ciw', desc = 'Change inner word' },
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
         ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" },

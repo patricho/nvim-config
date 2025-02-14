@@ -1,12 +1,59 @@
 ---@type LazySpec
 return {
     {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {
+            modes = {
+                search = {
+                    enabled = true,
+                }
+            }
+        },
+        -- stylua: ignore
+        keys = {
+            { "<Leader>fj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
+            -- { "S", mode = { "n", "x", u }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+            -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
+    },
+
+    {
+        "debugloop/telescope-undo.nvim",
+        keys = {
+            {
+                "<Leader>fu",
+                "<cmd>Telescope undo<cr>",
+                desc = "Undo history",
+            },
+        },
+        opts = {
+            -- don't use `defaults = { }` here, do this in the main telescope spec
+            extensions = {
+                undo = {
+                    -- telescope-undo.nvim config
+                },
+            },
+        },
+        config = function(_, opts)
+            -- Calling telescope's setup from multiple specs does not hurt, it will happily merge the
+            -- configs for us. We won't use data, as everything is in it's own namespace (telescope
+            -- defaults, as well as each extension).
+            require("telescope").setup(opts)
+            require("telescope").load_extension("undo")
+        end,
+    },
+    {
         "kylechui/nvim-surround",
         event = "VeryLazy",
         config = function()
             require("nvim-surround").setup({})
         end
     },
+
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -402,8 +449,7 @@ return {
                             'CursorHold',
                         }
                     },
-                    hl = { bg = "#303030", fg = "#808080" },
-                    surround = { condition = gitblame.is_blame_text_available, separator = section, color = "#303030" },
+                    hl = { fg = "#808080" },
                     padding = { left = 1, right = 1 }
                 }),
                 status.component.file_info({
