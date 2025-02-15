@@ -60,8 +60,8 @@ return {
       },
       n = {
         ["-"] = { "/", desc = "Search forwards" },
-        ["_"] = { function() require("flash").jump() end, desc = "Flash jump" },
         ["<Leader>fj"] = { function() require("flash").jump() end, desc = "Flash jump" },
+        ["<Leader>fg"] = { ":Telescope live_grep glob_pattern=", desc = "Find words in file glob" },
         ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
         ["<Leader>qn"] = { "<cmd>cnext<cr>", desc = "Next quickfix item" },
         ["<Leader>qp"] = { "<cmd>cprev<cr>", desc = "Previous quickfix item" },

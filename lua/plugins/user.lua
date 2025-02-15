@@ -13,7 +13,8 @@ return {
         },
         -- stylua: ignore
         keys = {
-            { "<Leader>fj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
+            -- NOTE: Defined in astrocore.lua instead
+            -- { "<Leader>fj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
             -- { "S", mode = { "n", "x", u }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
             -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
             -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
