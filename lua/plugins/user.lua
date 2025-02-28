@@ -59,6 +59,20 @@ return {
     },
 
     {
+        "smartpde/telescope-recent-files",
+        opts = {
+            extensions = {
+                recent_files = {
+                },
+            },
+        },
+        config = function(_, opts)
+            require("telescope").setup(opts)
+            require("telescope").load_extension("recent_files")
+        end,
+    },
+
+    {
         "folke/flash.nvim",
         event = "VeryLazy",
         ---@type Flash.Config

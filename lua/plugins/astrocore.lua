@@ -62,6 +62,7 @@ return {
         ["-"] = { "/", desc = "Search forwards" },
         ["<Leader>fj"] = { function() require("flash").jump() end, desc = "Flash jump" },
         ["<Leader>fg"] = { ":Telescope live_grep glob_pattern=", desc = "Find words in file glob" },
+        ["<Leader>fo"] = { "<cmd>lua require('telescope').extensions.recent_files.pick()<CR>", desc = "Find recent (old) files" },
         ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
         ["<Leader>qn"] = { "<cmd>cnext<cr>", desc = "Next quickfix item" },
         ["<Leader>qp"] = { "<cmd>cprev<cr>", desc = "Previous quickfix item" },
