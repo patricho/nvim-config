@@ -16,6 +16,7 @@ vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' }
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
+vim.o.autoread = true
 vim.o.scrolloff = 6
 vim.cmd("packadd cfilter")
 

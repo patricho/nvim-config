@@ -29,7 +29,8 @@ return {
         "typescript-language-server",
         "svelte-language-server",
         "lua-language-server",
-        "rust-analyzer"
+        "rust-analyzer",
+        "intelephense"
       },
     },
   },
