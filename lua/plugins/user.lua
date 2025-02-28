@@ -37,6 +37,7 @@ return {
             require("telescope").load_extension("hierarchy")
         end,
     },
+
     {
         "folke/flash.nvim",
         event = "VeryLazy",
@@ -114,7 +115,7 @@ return {
             -- "davidsierradz/cmp-conventionalcommits",
         },
         config = function(plugin, opts)
-            require "astronvim.plugins.configs.cmp"(plugin, opts)
+            require "astronvim.plugins.configs.cmp" (plugin, opts)
 
             local cmp = require("cmp")
             local compare = require('cmp.config.compare')
@@ -231,7 +232,6 @@ return {
                     ghost_text = true,
                 },
             })
-
         end,
         -- opts = function(_, opts)
         -- end
@@ -270,8 +270,8 @@ return {
                         },
                         dragon = {
                             ui = {
-                                bg_p2 = "#1F1A1A", -- cursorline background
-                                bg_visual = "#662200", -- selection background
+                                bg_p2      = "#1f1d1c", -- cursorline background
+                                bg_visual  = "#662200", -- selection background
 
                                 nontext    = "#54546D", -- line numbers etc
                                 special    = "#54546D", -- current indentation vertical lines
@@ -427,13 +427,13 @@ return {
             "rafamadriz/friendly-snippets"
         },
         config = function(plugin, opts)
-            require "astronvim.plugins.configs.luasnip"(plugin, opts)
+            require "astronvim.plugins.configs.luasnip" (plugin, opts)
             -- add more custom luasnip configuration such as filetype extend or custom snippets
             local luasnip = require "luasnip"
             luasnip.filetype_extend("javascript", { "javascriptreact" })
 
             local config_path = vim.fn.stdpath("config")
-            require("luasnip.loaders.from_lua").load({ paths = {config_path .. "/snippets"} })
+            require("luasnip.loaders.from_lua").load({ paths = { config_path .. "/snippets" } })
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
@@ -460,8 +460,8 @@ return {
 
             opts.statusline = {
                 hl = { fg = "fg", bg = "bg" }, -- #000000" },
-                status.component.mode({ mode_text = { hl = { fg = "#000000"}, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
-                status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#303030" }}, surround = { color = "#303030", separator = section } }),
+                status.component.mode({ mode_text = { hl = { fg = "#000000" }, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
+                status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#303030" } }, surround = { color = "#303030", separator = section } }),
                 status.component.git_diff({ surround = { separator = section, color = "#303030" }, padding = { right = 1 } }),
                 status.component.diagnostics({
                     ERROR = { icon = { kind = "DiagnosticError", padding = { left = 1, right = 1 } } },
@@ -493,11 +493,11 @@ return {
                 status.component.file_info({
                     file_icon = { hl = { fg = "fg" }, padding = { left = 0 } },
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color ="#303030" }
+                    surround = { separator = section, color = "#303030" }
                 }),
                 status.component.lsp({
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color ="#303030" },
+                    surround = { separator = section, color = "#303030" },
                     lsp_client_names = { icon = { padding = { left = 0, right = 1 } } }
                 }),
                 status.component.treesitter({
