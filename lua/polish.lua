@@ -55,6 +55,8 @@ vim.api.nvim_set_hl(0, "HeirlineVisual", { fg = "#000000", bg = "#fe8019" })
 vim.api.nvim_set_hl(0, "HeirlineReplace", { fg = "#ffffff", bg = "#d70000" })
 
 vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#fe8019", bg ="#500f08" })
+vim.api.nvim_set_hl(0, "LocalHighlight", { bg ="#461414" })
+vim.api.nvim_set_hl(0, "NotifyBackground", { bg ="#000000" })
 
 -- Search colors
 vim.api.nvim_set_hl(0, "Search", { fg = '#d70000' })

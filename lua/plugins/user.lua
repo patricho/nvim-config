@@ -39,6 +39,26 @@ return {
     },
 
     {
+        'tzachar/local-highlight.nvim',
+        config = function()
+            require('local-highlight').setup({
+                -- file_types = {'python', 'cpp'}, -- If this is given only attach to this
+                -- disable_file_types = {'tex'}, -- OR attach to every filetype except:
+                hlgroup = 'LocalHighlight',
+                cw_hlgroup = nil,
+                insert_mode = false,
+                min_match_len = 1,
+                max_match_len = math.huge,
+                highlight_single_match = true,
+                debounce_timeout = 100,
+                animate = {
+                    enabled = false
+                }
+            })
+        end
+    },
+
+    {
         "folke/flash.nvim",
         event = "VeryLazy",
         ---@type Flash.Config
