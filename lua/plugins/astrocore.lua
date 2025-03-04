@@ -76,16 +76,11 @@ return {
         ["<Leader>Wc"] = { "<C-w>q", desc = "Close current window" },
         ["<Leader>WC"] = { "<C-w>o", desc = "Close other windows" },
         ["<Leader>C"] = { function ()
-          -- Get current buffer
           local current = vim.api.nvim_get_current_buf()
-
-          -- Get all listed buffers
           local buffers = vim.api.nvim_list_bufs()
-
-          -- Loop through buffers and delete all except current
           for _, buf in ipairs(buffers) do
             if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
-              vim.api.nvim_buf_delete(buf, { force = true })
+              vim.api.nvim_buf_delete(buf, { force = false })
             end
           end
         end, desc = "Close other buffers" },

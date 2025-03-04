@@ -1,6 +1,70 @@
 ---@type LazySpec
 return {
     {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false,
+        opts = {
+            provider = "claude",
+            claude = {
+                endpoint = "https://api.anthropic.com",
+                model = "claude-3-7-sonnet-20250219",
+                temperature = 0,
+                max_tokens = 4096,
+            },
+            vendors = {
+                ollama = {
+                    __inherited_from = "openai",
+                    api_key_name = "",
+                    endpoint = "http://127.0.0.1:11434/v1",
+                    model = "qwen2.5-coder:latest",
+                },
+            },
+            cursor_applying_provider = 'ollama',
+            behaviour = {
+                enable_cursor_planning_mode = true,
+            },
+        },
+        build = "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
+            -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+            -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+            -- "ibhagwan/fzf-lua", -- for file_selector provider fzf
+            -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+            -- {
+            --     -- support for image pasting
+            --     "HakonHarnes/img-clip.nvim",
+            --     event = "VeryLazy",
+            --     opts = {
+            --         -- recommended settings
+            --         default = {
+            --             embed_image_as_base64 = false,
+            --             prompt_for_file_name = false,
+            --             drag_and_drop = {
+            --                 insert_mode = true,
+            --             },
+            --             -- required for Windows users
+            --             use_absolute_path = true,
+            --         },
+            --     },
+            -- },
+            {
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "Avante" }, -- removed "markdown"
+                },
+                ft = { "Avante" },
+            },
+        },
+    },
+    {
         "jmacadie/telescope-hierarchy.nvim",
         dependencies = {
             {
