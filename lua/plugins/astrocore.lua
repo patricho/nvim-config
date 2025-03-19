@@ -90,20 +90,16 @@ return {
         ["Ö"] = { 'ma"8yy"8p`a', desc = "Duplicate line" },
         ["Å"] = { "<cmd>GoAltV!<cr>", desc = "Alternate file vertical split" },
         ["å"] = { "<cmd>GoAlt!<cr>", desc = "Alternate file" },
+        ["åå"] = { "magg0VGy`a", desc = "Yank entire file" },
         ["Ä"] = { "maO<Esc>`a", desc = "Insert empty line above" },
         ["ä"] = { "mao<Esc>`a", desc = "Insert empty line below" },
         ["ga"] = { vim.lsp.buf.code_action, desc = "Go to code action" },
         ["gd"] = { vim.lsp.buf.definition, desc = "Go to definition" },
         ["gD"] = {
           function()
-            -- Create a vertical split
             vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>v', true, true, true), 'n', true)
-
-            -- Call the LSP definition command
             vim.lsp.buf.definition()
-
-            -- Top the current position
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('ztkk', true, true, true), 'n', true)
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('zt', true, true, true), 'n', true)
           end,
           desc = "Close buffer from tabline",
         },

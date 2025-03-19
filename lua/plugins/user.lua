@@ -149,7 +149,7 @@ return {
         opts = {
             modes = {
                 search = {
-                    enabled = true,
+                    enabled = false,
                 }
             }
         },
