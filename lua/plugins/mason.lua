@@ -26,7 +26,7 @@ return {
         "golines",
         "golangci-lint",
         "gopls",
-        "typescript-language-server",
+        -- "typescript-language-server",
         "svelte-language-server",
         "lua-language-server",
         "rust-analyzer",
