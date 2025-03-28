@@ -374,12 +374,12 @@ return {
                         },
                         dragon = {
                             ui = {
-                                bg_p2      = "#1f1d1c", -- cursorline background
+                                bg_p2      = "#24211f", -- cursorline background
                                 bg_visual  = "#662200", -- selection background
 
-                                nontext    = "#54546D", -- line numbers etc
-                                special    = "#54546D", -- current indentation vertical lines
-                                whitespace = "#24242D", -- indendation vertical lines
+                                nontext    = "#5a5755", -- line numbers etc
+                                special    = "#494644", -- current indentation vertical lines
+                                whitespace = "#383533", -- indendation vertical lines
                             }
                         }
                     }
@@ -407,7 +407,7 @@ return {
         init = function()
             require("scrollbar").setup({
                 handle = {
-                    color = "#444444"
+                    color = "#5a5755"
                 },
                 marks = {
                     Search = { color = "#d70000" },
@@ -565,20 +565,20 @@ return {
             opts.statusline = {
                 hl = { fg = "fg", bg = "bg" }, -- #000000" },
                 status.component.mode({ mode_text = { hl = { fg = "#000000" }, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
-                status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#303030" } }, surround = { color = "#303030", separator = section } }),
-                status.component.git_diff({ surround = { separator = section, color = "#303030" }, padding = { right = 1 } }),
+                status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#211e1c" } }, surround = { color = "#211e1c", separator = section } }),
+                status.component.git_diff({ surround = { separator = section, color = "#211e1c" }, padding = { right = 1 } }),
                 status.component.diagnostics({
                     ERROR = { icon = { kind = "DiagnosticError", padding = { left = 1, right = 1 } } },
                     WARN = { icon = { kind = "DiagnosticWarn", padding = { left = 1, right = 1 } } },
                     INFO = { icon = { kind = "DiagnosticInfo", padding = { left = 1, right = 1 } } },
                     HINT = { icon = { kind = "DiagnosticHint", padding = { left = 1, right = 1 } } },
-                    surround = { separator = section, color = "#303030" },
+                    surround = { separator = section, color = "#211e1c" },
                     padding = { right = 1 }
                 }),
                 status.component.fill(),
                 status.component.cmd_info({
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color = "#303030" }
+                    surround = { separator = section, color = "#211e1c" }
                 }),
                 status.component.fill(),
                 status.component.builder({
@@ -597,16 +597,16 @@ return {
                 status.component.file_info({
                     file_icon = { hl = { fg = "fg" }, padding = { left = 0 } },
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color = "#303030" }
+                    surround = { separator = section, color = "#211e1c" }
                 }),
                 status.component.lsp({
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color = "#303030" },
+                    surround = { separator = section, color = "#211e1c" },
                     lsp_client_names = { icon = { padding = { left = 0, right = 1 } } }
                 }),
                 status.component.treesitter({
                     padding = { left = 1, right = 1 },
-                    surround = { separator = section, color = "#303030" }
+                    surround = { separator = section, color = "#211e1c" }
                 }),
                 status.component.builder({
                     -- %l = current line number
@@ -614,8 +614,8 @@ return {
                     -- %c = column number
                     -- %P = percentage through file of displayed window
                     provider = " 󰦨 %l:%c ",
-                    hl = { bg = "#303030", fg = "#808080" },
-                    surround = { separator = section, color = "#303030" },
+                    hl = { bg = "#211e1c", fg = "#808080" },
+                    surround = { separator = section, color = "#211e1c" },
                 }),
                 -- status.component.nav({ padding = { right = 1 } }),
                 status.component.mode({ padding = { left = 1, right = 1 }, surround = { separator = { "", "" } } }),
