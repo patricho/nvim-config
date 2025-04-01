@@ -17,22 +17,25 @@ return {
                 endpoint = "https://api.anthropic.com",
                 model = "claude-3-7-sonnet-20250219",
                 temperature = 0,
-                max_tokens = 4096,
+                max_tokens = 8192,
             },
-            vendors = {
-                ollama = {
-                    __inherited_from = "openai",
-                    api_key_name = "",
-                    endpoint = "http://127.0.0.1:11434/v1",
-                    model = "qwen2.5-coder:latest",
-                },
+            gemini = {
+                endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+                model = "gemini-2.5-pro-exp-03-25",
+                -- model = "gemini-2.0-flash",
+                timeout = 30000,
+                temperature = 0,
+                max_tokens = 8192,
+                api_key_name = "GEMINI_API_KEY"
             },
-            cursor_applying_provider = 'ollama',
+            ollama = {
+                model = "qwen2.5-coder:latest",
+            },
+            cursor_applying_provider = "ollama",
             behaviour = {
                 enable_cursor_planning_mode = true,
             },
         },
-        build = "make",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "stevearc/dressing.nvim",
