@@ -33,6 +33,12 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
+-- Color column
+vim.cmd("set cc=100")
+vim.g.virtcolumn_char = '▕' -- char to display the line
+vim.g.virtcolumn_priority = 1 -- priority of extmark
+vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#444444" })
+
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")
 vim.cmd("highlight iCursor guibg=#ffff00 ctermbg=229")

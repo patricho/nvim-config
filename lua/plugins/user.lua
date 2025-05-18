@@ -7,6 +7,10 @@ return {
     },
 
     {
+        "xiyaowong/virtcolumn.nvim",
+    },
+
+    {
         "yetone/avante.nvim",
         event = "VeryLazy",
         lazy = false,
@@ -21,8 +25,7 @@ return {
             },
             gemini = {
                 endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-                model = "gemini-2.5-pro-exp-03-25",
-                -- model = "gemini-2.0-flash",
+                model = "gemini-2.5-flash-preview-04-17",
                 timeout = 30000,
                 temperature = 0,
                 max_tokens = 8192,
@@ -73,6 +76,7 @@ return {
             },
         },
     },
+
     {
         "jmacadie/telescope-hierarchy.nvim",
         dependencies = {
