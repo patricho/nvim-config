@@ -120,6 +120,8 @@ return {
         ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" },
         ["<Leader>gB"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
         ["<Leader>gD"] = { "<C-w>h<cmd>q<cr>", desc = "Close diff view" },
+        ["<Leader>le"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })  end, desc = "Send diagnostic errors to quickfix" },
+        ["<Leader>lw"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })  end, desc = "Send diagnostic warnings to quickfix" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {

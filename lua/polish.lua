@@ -13,7 +13,9 @@ vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'Rename symbol und
 vim.keymap.set('n', '<leader>fs', require("telescope.builtin").lsp_document_symbols, { desc = 'Search file symbols' })
 vim.keymap.set('n', '<leader>fS', vim.lsp.buf.workspace_symbol, { desc = 'Search workspace symbols' })
 vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
+vim.keymap.set('n', '<M-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
+vim.keymap.set('n', '<M-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
 vim.o.autoread = true

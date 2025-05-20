@@ -1,6 +1,27 @@
 ---@type LazySpec
 return {
     {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {
+            defaults = {
+                -- layout_strategy = 'cursor',
+                layout_config = {
+                    horizontal = {
+                        width = 0.95,
+                        height = 0.95
+                    },
+                    vertical = {
+                        width = 0.95,
+                        height = 0.95
+                    }
+                },
+            },
+
+        },
+    },
+
+    {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
