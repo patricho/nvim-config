@@ -1,6 +1,18 @@
 ---@type LazySpec
 return {
     {
+        'stevearc/quicker.nvim',
+        event = "FileType qf",
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {
+            follow = {
+                enabled = true,
+            },
+        },
+    },
+
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {
@@ -368,6 +380,18 @@ return {
         -- opts = function(_, opts)
         -- end
     },
+
+    -- {
+    --     "webhooked/kanso.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require('kanso').setup({
+    --             commentStyle = { italic = true },
+    --             transparent = true
+    --         })
+    --     end,
+    -- },
 
     {
         "rebelot/kanagawa.nvim",
