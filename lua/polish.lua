@@ -19,7 +19,7 @@ vim.keymap.set('n', '<M-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix ite
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
 vim.o.autoread = true
-vim.o.scrolloff = 6
+vim.o.scrolloff = 8
 vim.cmd("packadd cfilter")
 
 vim.diagnostic.config({

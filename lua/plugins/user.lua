@@ -426,7 +426,7 @@ return {
                         },
                         dragon = {
                             ui = {
-                                bg_p2      = "#24211f", -- cursorline background
+                                bg_p2      = "#181715", -- cursorline background
                                 bg_visual  = "#662200", -- selection background
 
                                 nontext    = "#5a5755", -- line numbers etc
