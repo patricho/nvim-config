@@ -15,6 +15,12 @@ return {
       null_ls.builtins.formatting.goimports,
       null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.gofmt,
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.prettier.with {
+        name = "prettier_asp", -- Give it a distinct name if needed for logs
+        filetypes = { "aspvbs" },
+        extra_args = { "--parser", "html" },
+      },
     })
   end,
 }
