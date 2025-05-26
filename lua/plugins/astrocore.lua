@@ -78,15 +78,6 @@ return {
         ["<Leader>Wl"] = { "<C-w>v", desc = "Create vertical window split" },
         ["<Leader>Wc"] = { "<C-w>q", desc = "Close current window" },
         ["<Leader>WC"] = { "<C-w>o", desc = "Close other windows" },
-        ["<Leader>C"] = { function ()
-          local current = vim.api.nvim_get_current_buf()
-          local buffers = vim.api.nvim_list_bufs()
-          for _, buf in ipairs(buffers) do
-            if buf ~= current and vim.api.nvim_buf_is_valid(buf) then
-              vim.api.nvim_buf_delete(buf, { force = false })
-            end
-          end
-        end, desc = "Close other buffers" },
         ["ö"] = { '"_dd', desc = "Delete row" },
         ["Ö"] = { 'ma"8yy"8p`a', desc = "Duplicate line" },
         ["Å"] = { "<cmd>GoAltV!<cr>", desc = "Alternate file vertical split" },
@@ -125,6 +116,16 @@ return {
         ["<Leader>lw"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })  end, desc = "Send diagnostic warnings to quickfix" },
         ["<Leader>mf"] = { ":Telescope recall<cr>", desc = "Recall Telescope" },
         ["<Leader>fm"] = { ":Telescope recall<cr>", desc = "Find Recall marks" },
+        ["<Leader>bb"] = { ":BufferPick<cr>", desc = "Pick buffer from tabline" },
+        ["<Leader>bc"] = { ":BufferClose<cr>", desc = "Close current buffer" },
+        ["<Leader>c"]  = { ":BufferClose<cr>", desc = "Close current buffer" },
+        ["<Leader>bC"] = { ":BufferCloseAllButCurrent<cr>", desc = "Close all other buffers" },
+        ["<Leader>C"]  = { ":BufferCloseAllButCurrent<cr>", desc = "Close all other buffers" },
+        ["<Leader>bd"] = { ":BufferPickDelete<cr>", desc = "Close buffer from tabline" },
+        ["<Leader>b1"] = { ":BufferGoto 1<cr>", desc = "Go to buffer 1" },
+        ["<Leader>b2"] = { ":BufferGoto 2<cr>", desc = "Go to buffer 2" },
+        ["<Leader>b3"] = { ":BufferGoto 3<cr>", desc = "Go to buffer 3" },
+        ["<Leader>b4"] = { ":BufferGoto 4<cr>", desc = "Go to buffer 4" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {
