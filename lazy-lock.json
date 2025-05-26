@@ -61,6 +61,7 @@
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "promise-async": { "branch": "main", "commit": "38a4575da9497326badd3995e768b4ccf0bb153e" },
   "quicker.nvim": { "branch": "master", "commit": "51d3926f183c2d98fbc237cc237ae0926839af3a" },
+  "recall.nvim": { "branch": "main", "commit": "1b9312b27c15aa0b8fb362d79a77e15b8abdb1cc" },
   "render-markdown.nvim": { "branch": "main", "commit": "92256e02db70c474f97fc461b6b6bc4aff7a499a" },
   "resession.nvim": { "branch": "master", "commit": "cc819b0489938d03e4f3532a583354f0287c015b" },
   "smart-splits.nvim": { "branch": "master", "commit": "3311ae5dab72399b1f229183281528a2b28d470f" },

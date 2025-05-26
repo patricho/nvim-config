@@ -16,6 +16,14 @@ vim.keymap.set('n', '<C-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' }
 vim.keymap.set('n', '<M-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 vim.keymap.set('n', '<M-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
+vim.keymap.set('n', "<Leader>mm", require("recall").toggle, { desc = "Recall toggle" })
+vim.keymap.set('n', "mm"        , require("recall").toggle, { desc = "Recall toggle" })
+vim.keymap.set('n', "<Leader>mn", require("recall").goto_next, { desc = "Recall next" })
+vim.keymap.set('n', "mn"        , require("recall").goto_next, { desc = "Recall next" })
+vim.keymap.set('n', "<Leader>mp", require("recall").goto_prev, { desc = "Recall previous" })
+vim.keymap.set('n', "mp"        , require("recall").goto_prev, { desc = "Recall previous" })
+vim.keymap.set('n', "<Leader>mc", require("recall").clear, { desc = "Recall clear" })
+vim.keymap.set('n', "mc"        , require("recall").clear, { desc = "Recall clear" })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
 vim.o.autoread = true
@@ -38,7 +46,7 @@ vim.diagnostic.config({
 -- Color column
 vim.cmd("set cc=100")
 vim.g.virtcolumn_char = '▕' -- char to display the line
-vim.g.virtcolumn_priority = 1 -- priority of extmark
+vim.g.virtcolumn_priority = 0 -- priority of extmark
 vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#333333" })
 
 -- Cursor colors and behavior

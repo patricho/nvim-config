@@ -123,6 +123,8 @@ return {
         ["<Leader>gD"] = { "<C-w>h<cmd>q<cr>", desc = "Close diff view" },
         ["<Leader>le"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })  end, desc = "Send diagnostic errors to quickfix" },
         ["<Leader>lw"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })  end, desc = "Send diagnostic warnings to quickfix" },
+        ["<Leader>mf"] = { ":Telescope recall<cr>", desc = "Recall Telescope" },
+        ["<Leader>fm"] = { ":Telescope recall<cr>", desc = "Find Recall marks" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {

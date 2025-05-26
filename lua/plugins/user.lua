@@ -1,6 +1,13 @@
 ---@type LazySpec
 return {
     {
+        "fnune/recall.nvim",
+        config = function()
+            require("recall").setup({})
+        end
+    },
+
+    {
         'stevearc/quicker.nvim',
         event = "FileType qf",
         ---@module "quicker"
