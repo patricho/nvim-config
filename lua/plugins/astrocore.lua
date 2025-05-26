@@ -127,6 +127,11 @@ return {
         ["<Leader>b2"] = { ":BufferGoto 2<cr>", desc = "Go to buffer 2" },
         ["<Leader>b3"] = { ":BufferGoto 3<cr>", desc = "Go to buffer 3" },
         ["<Leader>b4"] = { ":BufferGoto 4<cr>", desc = "Go to buffer 4" },
+        ["<Leader>b5"] = { ":BufferGoto 5<cr>", desc = "Go to buffer 5" },
+        ["<Leader>b6"] = { ":BufferGoto 6<cr>", desc = "Go to buffer 6" },
+        ["<Leader>b7"] = { ":BufferGoto 7<cr>", desc = "Go to buffer 7" },
+        ["<Leader>b8"] = { ":BufferGoto 8<cr>", desc = "Go to buffer 8" },
+        ["<Leader>b9"] = { ":BufferGoto 9<cr>", desc = "Go to buffer 9" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {

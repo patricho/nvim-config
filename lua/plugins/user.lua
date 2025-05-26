@@ -9,6 +9,8 @@ return {
         opts = {
             animation = true,
             focus_on_close = 'right',
+            maximum_padding = 2,
+            minimum_padding = 2,
             icons = {
                 -- Configure the base icons on the bufferline.
                 -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
