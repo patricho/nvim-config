@@ -14,7 +14,7 @@ return {
                 -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
                 buffer_index = false,
                 buffer_number = false,
-                button = '',
+                button = '',
                 -- Enables / disables diagnostic symbols
                 diagnostics = {
                     [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ''},
@@ -52,7 +52,7 @@ return {
                 -- Supports all the base icon options, plus `modified` and `pinned`.
                 alternate = {filetype = {enabled = false}},
                 current = {buffer_index = false},
-                inactive = {button = '×'},
+                inactive = {button = ''},
                 visible = {modified = {buffer_number = false}},
             },
         },

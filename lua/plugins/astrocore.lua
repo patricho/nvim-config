@@ -117,6 +117,7 @@ return {
         ["<Leader>mf"] = { ":Telescope recall<cr>", desc = "Recall Telescope" },
         ["<Leader>fm"] = { ":Telescope recall<cr>", desc = "Find Recall marks" },
         ["<Leader>bb"] = { ":BufferPick<cr>", desc = "Pick buffer from tabline" },
+        ["<Leader>bg"] = { ":BufferPick<cr>", desc = "Goto buffer from tabline" },
         ["<Leader>bc"] = { ":BufferClose<cr>", desc = "Close current buffer" },
         ["<Leader>c"]  = { ":BufferClose<cr>", desc = "Close current buffer" },
         ["<Leader>bC"] = { ":BufferCloseAllButCurrent<cr>", desc = "Close all other buffers" },
