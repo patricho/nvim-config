@@ -1,60 +1,70 @@
 ---@type LazySpec
 return {
-    {'romgrk/barbar.nvim',
+    {
+        "lukas-reineke/virt-column.nvim",
+        opts = {
+            char = "▕" ,
+            virtcolumn = "100",
+            highlight = "VirtColumn"
+        }
+    },
+
+    {
+        "romgrk/barbar.nvim",
         dependencies = {
-            'lewis6991/gitsigns.nvim',
-            'nvim-tree/nvim-web-devicons',
+            "lewis6991/gitsigns.nvim",
+            "nvim-tree/nvim-web-devicons",
         },
         init = function() vim.g.barbar_auto_setup = false end,
         opts = {
             animation = true,
-            focus_on_close = 'right',
+            focus_on_close = "right",
             maximum_padding = 2,
             minimum_padding = 2,
             icons = {
                 -- Configure the base icons on the bufferline.
-                -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
+                -- Valid options to display the buffer index and -number are `true`, "superscript" and "subscript"
                 buffer_index = false,
                 buffer_number = false,
-                button = '',
+                button = "",
                 -- Enables / disables diagnostic symbols
                 diagnostics = {
-                    [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ''},
+                    [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ""},
                     [vim.diagnostic.severity.WARN] = {enabled = false},
                     [vim.diagnostic.severity.INFO] = {enabled = false},
                     [vim.diagnostic.severity.HINT] = {enabled = false},
                 },
                 gitsigns = {
-                    added = {enabled = false, icon = '+'},
-                    changed = {enabled = false, icon = '~'},
-                    deleted = {enabled = false, icon = '-'},
+                    added = {enabled = false, icon = "+"},
+                    changed = {enabled = false, icon = "~"},
+                    deleted = {enabled = false, icon = "-"},
                 },
                 filetype = {
-                    -- Sets the icon's highlight group.
+                    -- Sets the icon"s highlight group.
                     -- If false, will use nvim-web-devicons colors
                     custom_colors = false,
 
                     -- Requires `nvim-web-devicons` if `true`
                     enabled = true,
                 },
-                separator = {left = '', right = ''},
+                separator = {left = "", right = ""},
 
                 -- If true, add an additional separator at the end of the buffer list
                 separator_at_end = false,
 
                 -- Configure the icons on the bufferline when modified or pinned.
                 -- Supports all the base icon options.
-                modified = {button = '●'},
-                pinned = {button = '', filename = true},
+                modified = {button = "●"},
+                pinned = {button = "", filename = true},
 
-                -- -- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
-                -- preset = 'slanted',
+                -- -- Use a preconfigured buffer appearance— can be "default", "powerline", or "slanted"
+                -- preset = "slanted",
 
                 -- Configure the icons on the bufferline based on the visibility of a buffer.
                 -- Supports all the base icon options, plus `modified` and `pinned`.
                 alternate = {filetype = {enabled = false}},
                 current = {buffer_index = false},
-                inactive = {button = ''},
+                inactive = {button = ""},
                 visible = {modified = {buffer_number = false}},
             },
         },
@@ -104,10 +114,6 @@ return {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
-    },
-
-    {
-        "xiyaowong/virtcolumn.nvim",
     },
 
     {
