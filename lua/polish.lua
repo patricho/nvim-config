@@ -44,7 +44,7 @@ vim.diagnostic.config({
 })
 
 -- Color column
-vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#282828" })
+vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#2a2724" })
 
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")
