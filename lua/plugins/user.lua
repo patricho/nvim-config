@@ -742,86 +742,10 @@ return {
                     hl = { bg = "#211e1c", fg = "#808080" },
                     surround = { separator = section, color = "#211e1c" },
                 }),
-                -- status.component.nav({ padding = { right = 1 } }),
                 status.component.mode({ padding = { left = 1, right = 1 }, surround = { separator = { "", "" } } }),
-
-                -- -- Create a custom component to display the time
-                -- status.component.builder({
-                --     {
-                --         provider = function()
-                --             local time = os.date("%H:%M")
-                --             ---@cast time string
-                --             return status.utils.stylize(time, {
-                --                 icon = { kind = "Clock", padding = { left = 1, right = 1 } }, -- use our new clock icon
-                --                 padding = { right = 1 }, -- pad the right side so it's not cramped
-                --             })
-                --         end,
-                --     },
-                --     update = { -- update should happen when the mode has changed as well as when the time has changed
-                --         "User", -- We can use the User autocmd event space to tell the component when to update
-                --         "ModeChanged",
-                --         callback = vim.schedule_wrap(function(_, args)
-                --             if -- update on user UpdateTime event and mode change
-                --             (args.event == "User" and args.match == "UpdateTime")
-                --             or (args.event == "ModeChanged" and args.match:match(".*:.*"))
-                --             then
-                --                 vim.cmd.redrawstatus()
-                --             end
-                --         end),
-                --     },
-                --     hl = status.hl.get_attributes("mode"), -- highlight based on mode attributes
-                --     surround = { separator = "right", color = status.hl.mode_bg }, -- background highlight based on mode
-                -- }),
             }
 
-            -- -- Now that we have the component, we need a timer to emit the User UpdateTime event
-            -- vim.uv.new_timer():start(
-            --     (60 - tonumber(os.date("%S"))) * 1000, -- offset timer based on current seconds past the minute
-            --     60000, -- update every 60 seconds
-            --     vim.schedule_wrap(function()
-            --         vim.api.nvim_exec_autocmds(
-            --             "User",
-            --             { pattern = "UpdateTime", modeline = false }
-            --         )
-            --     end)
-            -- )
-
             opts.winbar = {
-                -- hl = { bg = "#000000" },
-
-                -- store the current buffer number
-                init = function(self)
-                    self.bufnr = vim.api.nvim_get_current_buf()
-                end,
-
-                fallthrough = false, -- pick the correct winbar based on condition
-
-                -- inactive winbar
-                {
-                    condition = function()
-                        return not status.condition.is_active()
-                    end,
-                    -- show the path to the file relative to the working directory
-                    status.component.separated_path({
-                        path_func = status.provider.filename({ modify = ":.:h" }),
-                    }),
-                    -- add the file name and icon
-                    status.component.file_info({
-                        file_icon = {
-                            hl = status.hl.file_icon("winbar"),
-                            padding = { left = 0 },
-                        },
-                        filename = {},
-                        filetype = false,
-                        file_modified = false,
-                        file_read_only = false,
-                        hl = status.hl.get_attributes("winbarnc"),
-                        surround = false,
-                        update = "BufEnter",
-                    }),
-                },
-
-                -- active winbar
                 {
                     -- show the path to the file relative to the working directory
                     status.component.separated_path({
