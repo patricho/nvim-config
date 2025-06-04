@@ -52,18 +52,24 @@ return {
 
     {
         "vague2k/vague.nvim",
+        lazy = false,
+        priority = 1000,
         config = function()
             require("vague").setup({
                 colors = {
                     bg = "NONE",
                     line = "#181715", -- cursorline
                     visual = "#662200", -- selection
+                    fg = "#cdcdcd", -- ordinary text
+                    comment = "#5a5755", -- comments, indent lines, line numbers
+                    floatBorder = "#494644",
+                    search = "#d70000",
 
                     -- defaults:
                     -- fg = "#cdcdcd",
                     -- comment = "#606079",
                     -- floatBorder = "#878787",
-                    -- builtin = "#b4d4cf",
+                    -- builtin = "#b4d4cf", -- enums etc?
                     -- func = "#c48282",
                     -- string = "#e8b589",
                     -- number = "#e0a363",

@@ -629,7 +629,7 @@ return {
             local section = { "", "" }
 
             opts.statusline = {
-                hl = { fg = "fg", bg = "bg" }, -- #000000" },
+                hl = { fg = "fg", bg = "#000000" },
                 status.component.mode({ mode_text = { hl = { fg = "#000000" }, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
                 status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#211e1c" } }, surround = { color = "#211e1c", separator = section } }),
                 status.component.git_diff({ surround = { separator = section, color = "#211e1c" }, padding = { right = 1 } }),
