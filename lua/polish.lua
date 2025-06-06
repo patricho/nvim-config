@@ -26,6 +26,7 @@ vim.keymap.set('n', "<Leader>mc", require("recall").clear, { desc = "Recall clea
 vim.keymap.set('n', "mc"        , require("recall").clear, { desc = "Recall clear" })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
+vim.o.updatetime = 400
 vim.o.autoread = true
 vim.o.scrolloff = 8
 vim.cmd("packadd cfilter")
@@ -45,6 +46,9 @@ vim.diagnostic.config({
 
 -- Color column
 vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#2a2724" })
+vim.api.nvim_set_hl(0, 'IblIndent', { fg = '#2a2724' })
+vim.api.nvim_set_hl(0, 'NonText', { fg = '#ff0000' })
+vim.api.nvim_set_hl(0, 'Special', { fg = '#ffff00' })
 
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")
@@ -116,3 +120,4 @@ vim.api.nvim_set_hl(0, 'BufferInactiveBtn', { fg = '#333333', bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'BufferTabpagesSep', { fg = '#00ff00', bg = '#00ff00' })
 vim.api.nvim_set_hl(0, 'BufferTabpageFill', { bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'BufferTabpages', { fg = '#00ff00', bg = '#00ff00' })
+

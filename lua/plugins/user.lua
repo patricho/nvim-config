@@ -649,15 +649,21 @@ return {
                 status.component.fill(),
                 status.component.builder({
                     {
-                        condition = gitblame.is_blame_text_available,
-                        provider = gitblame.get_current_blame_text,
+                        condition = function()
+                            return gitblame.is_blame_text_available()
+                        end,
+                        provider = function()
+                            return gitblame.get_current_blame_text()
+                        end,
                         update = {
-                            'CursorMoved',
-                            'CursorMovedI',
-                            'CursorHold',
-                        }
+                            "CursorHold",
+                            callback = vim.schedule_wrap(function()
+                                vim.cmd("redrawstatus")
+                            end),
+                        },
                     },
-                    hl = { fg = "#808080" },
+                    hl = { bg = "#211e1c", fg = "#808080" },
+                    surround = { separator = section, color = "#211e1c" },
                     padding = { left = 1, right = 1 }
                 }),
                 status.component.file_info({
@@ -735,6 +741,8 @@ return {
             date_format = "%Y-%m-%d",
             message_when_not_committed = "",
             display_virtual_text = 0, -- Disable virtual text, just show in heirline
+            delay = 100,
+            schedule_event = "CursorMoved",
         },
     }
 }
