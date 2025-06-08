@@ -113,6 +113,7 @@ return {
             require("kanso").setup({
                 commentStyle = { italic = true },
                 transparent = true,
+                theme = "zen",
                 colors = {
                     palette = {
                     },
@@ -125,6 +126,7 @@ return {
                                 float = {
                                     bg = "none",
                                     bg_border = "none",
+                                    fg_border  = "#494644",
                                 },
                                 pmenu = {
                                     bg = "none",
@@ -132,13 +134,15 @@ return {
                                     bg_sbar = "none",
                                     bg_thumb = "none",
                                 },
-                                cursor_line_nr_foreground = "#5a5755", -- line numbers etc
+                                cursor_line_nr_foreground = "#4a4745", -- line numbers etc
                                 cursor_line_nr_active_foreground = "#6a6765", -- active line number
                                 bg_p2      = "#181715", -- cursorline background
                                 bg_visual  = "#662200", -- selection background
-                                nontext    = "#5a5755", -- line numbers etc
-                                special    = "#494644", -- current indentation vertical lines
-                                whitespace = "#2a2724", -- indendation vertical lines
+                                nontext    = "#5a5755",
+                                special    = "#4a4745",
+                                whitespace = "#2a2724",
+                                indent_line = "#2a2724",
+                                active_indent_line  = "#4a4745",
                             }
                         }
                     }
