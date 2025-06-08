@@ -121,6 +121,8 @@ return {
                         all = {
                             syn = {
                                 comment = "#5a5755",
+                                operator = "#7a7775", -- plus minus equals
+                                punct = "#7a7775", -- parenthesis, punctuation
                             },
                             ui = {
                                 float = {
