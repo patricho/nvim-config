@@ -5,7 +5,7 @@ return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
   opts = {
-    colorscheme = "vague", -- darkearth miasma nordfox nightfox nord gruvbox-material vague kanso juliana kanagawa-wave kanagawa-dragon
+    colorscheme = "kanso-zen", -- darkearth miasma nordfox nightfox nord gruvbox-material vague kanso juliana kanagawa-wave kanagawa-dragon
 
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
