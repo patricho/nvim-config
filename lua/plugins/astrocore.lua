@@ -59,6 +59,7 @@ return {
         ["K"] = { ":move '<-2<CR>V'[=gv", desc = "Move selected lines up" },
         ["c"] = { '"_c' , desc = "Change without yank" },
         ["C"] = { '"_C' , desc = "Change without yank" },
+        ["<Leader>C"] = { 'ybk/<C-r>0<CR>N<CR>cgn' , desc = "Change current and following occurences" },
       },
       n = {
         ["-"] = { "/", desc = "Search forwards" },
