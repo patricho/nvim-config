@@ -46,7 +46,7 @@ vim.diagnostic.config({
 })
 
 -- Color column
-vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#2a2724" })
+vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#383230" })
 
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")
@@ -90,14 +90,14 @@ vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { fg = '#fe8019', bold = true, un
 
 -- Git diff styling
 vim.opt.fillchars = { diff = '╱' }
-vim.api.nvim_set_hl(0, 'DiffAdd',                  { bg = '#115016' })
+vim.api.nvim_set_hl(0, 'DiffAdd',                  { bg = '#0f4412' })
 vim.api.nvim_set_hl(0, 'GitSignsAdd',              { fg = '#1d982e' })
 -- vim.api.nvim_set_hl(0, 'ScrollbarGitAdd',       { fg = '#1d982e' })
 -- vim.api.nvim_set_hl(0, 'ScrollbarGitAddHandle', { fg = '#1d982e', bg = '#444444' })
-vim.api.nvim_set_hl(0, 'DiffDelete',               { fg = '#da3633' })
-vim.api.nvim_set_hl(0, 'GitSignsDelete',           { fg = '#da3633' })
--- vim.api.nvim_set_hl(0, 'ScrollbarGitDelete',    { fg = '#da3633' })
--- vim.api.nvim_set_hl(0, 'ScrollbarGitDeleteHandle', { fg = '#da3633', bg = '#444444' })
+vim.api.nvim_set_hl(0, 'DiffDelete',               { fg = '#962623' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete',           { fg = '#962623' })
+-- vim.api.nvim_set_hl(0, 'ScrollbarGitDelete',    { fg = '#962623' })
+-- vim.api.nvim_set_hl(0, 'ScrollbarGitDeleteHandle', { fg = '#962623', bg = '#444444' })
 vim.api.nvim_set_hl(0, 'DiffText',                 { bg = '#466570' })
 vim.api.nvim_set_hl(0, 'DiffChange',               { bg = '#25343c' })
 vim.api.nvim_set_hl(0, 'GitSignsChange',           { fg = '#466570' })

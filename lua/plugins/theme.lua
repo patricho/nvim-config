@@ -142,8 +142,8 @@ return {
                                 bg_visual  = "#662200", -- selection background
                                 nontext    = "#5a5755",
                                 special    = "#4a4745",
-                                whitespace = "#2a2724",
-                                indent_line = "#2a2724",
+                                whitespace = "#383230",
+                                indent_line = "#383230",
                                 active_indent_line  = "#4a4745",
                             }
                         }
