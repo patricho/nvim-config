@@ -17,4 +17,5 @@ end
 
 require "autocmds"
 require "lazy_setup"
+require "vimscripts"
 require "polish"

@@ -135,6 +135,7 @@ return {
         ["<Leader>b7"] = { ":BufferGoto 7<cr>", desc = "Go to buffer 7" },
         ["<Leader>b8"] = { ":BufferGoto 8<cr>", desc = "Go to buffer 8" },
         ["<Leader>b9"] = { ":BufferGoto 9<cr>", desc = "Go to buffer 9" },
+        ["<C-S>"] = { "<Plug>CycleNext", desc = "Cycle to next variant" },
 
         -- -- mappings seen under group name "Buffer"
         -- ["<Leader>bd"] = {

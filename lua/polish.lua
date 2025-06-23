@@ -17,14 +17,14 @@ vim.keymap.set('n', '<M-S-i>', '<cmd>cnext<cr>', { desc = 'Next quickfix item' }
 vim.keymap.set('n', '<C-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 vim.keymap.set('n', '<M-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
 vim.keymap.set('n', '<M-S-o>', '<cmd>cprev<cr>', { desc = 'Previous quickfix item' })
-vim.keymap.set('n', "<Leader>mm", require("recall").toggle, { desc = "Recall toggle" })
-vim.keymap.set('n', "mm"        , require("recall").toggle, { desc = "Recall toggle" })
-vim.keymap.set('n', "<Leader>mn", require("recall").goto_next, { desc = "Recall next" })
-vim.keymap.set('n', "mn"        , require("recall").goto_next, { desc = "Recall next" })
-vim.keymap.set('n', "<Leader>mp", require("recall").goto_prev, { desc = "Recall previous" })
-vim.keymap.set('n', "mp"        , require("recall").goto_prev, { desc = "Recall previous" })
-vim.keymap.set('n', "<Leader>mc", require("recall").clear, { desc = "Recall clear" })
-vim.keymap.set('n', "mc"        , require("recall").clear, { desc = "Recall clear" })
+vim.keymap.set('n', '<Leader>mm', require('recall').toggle, { desc = 'Recall toggle' })
+vim.keymap.set('n', 'mm'        , require('recall').toggle, { desc = 'Recall toggle' })
+vim.keymap.set('n', '<Leader>mn', require('recall').goto_next, { desc = 'Recall next' })
+vim.keymap.set('n', 'mn'        , require('recall').goto_next, { desc = 'Recall next' })
+vim.keymap.set('n', '<Leader>mp', require('recall').goto_prev, { desc = 'Recall previous' })
+vim.keymap.set('n', 'mp'        , require('recall').goto_prev, { desc = 'Recall previous' })
+vim.keymap.set('n', '<Leader>mc', require('recall').clear, { desc = 'Recall clear' })
+vim.keymap.set('n', 'mc'        , require('recall').clear, { desc = 'Recall clear' })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
 
 vim.o.updatetime = 400
