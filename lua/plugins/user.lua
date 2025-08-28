@@ -1,6 +1,37 @@
 ---@type LazySpec
 return {
     {
+        'NickvanDyke/opencode.nvim',
+        dependencies = {
+            { 'folke/snacks.nvim', opts = { input = { enabled = true } } },
+        },
+        ---@type opencode.Opts
+        opts = {
+            -- Your configuration, if any — see lua/opencode/config.lua
+        },
+        keys = {
+            -- TODO: Move to polish.lua
+            { '<leader>oa', function() require('opencode').ask() end, desc = 'Ask opencode', },
+            { '<leader>aa', function() require('opencode').ask() end, desc = 'Ask opencode', },
+            { '<leader>ob', function() require('opencode').ask('@buffer: ') end, desc = 'Ask opencode about buffer', mode = 'n', },
+            { '<leader>oB', function() require('opencode').ask('@buffers: ') end, desc = 'Ask opencode about open buffers', mode = 'n', },
+            { '<leader>oc', function() require('opencode').ask('@cursor: ') end, desc = 'Ask opencode about this', mode = 'n', },
+            { '<leader>oa', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+            { '<leader>ae', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+            { '<leader>ot', function() require('opencode').toggle() end, desc = 'Toggle embedded opencode', },
+            { '<leader>on', function() require('opencode').command('session_new') end, desc = 'New session', },
+            { '<leader>oy', function() require('opencode').command('messages_copy') end, desc = 'Copy last message', },
+            { '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, desc = 'Scroll messages up', },
+            { '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, desc = 'Scroll messages down', },
+            { '<leader>op', function() require('opencode').select_prompt() end, desc = 'Select prompt', mode = { 'n', 'v', }, },
+            -- -- Example: keymap for custom prompt
+            -- { '<leader>oe', function() require('opencode').prompt("Explain @cursor and its context") end, desc = "Explain code near cursor", },
+        },
+        config = function()
+        end
+    },
+
+    {
         "kylechui/nvim-surround",
         version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
@@ -13,11 +44,28 @@ return {
 
     {
         "lukas-reineke/virt-column.nvim",
-        opts = {
-            char = "▕" ,
-            virtcolumn = "100",
-            highlight = "VirtColumn"
-        }
+        config = function()
+            local cwd = vim.fn.getcwd()
+            local virtcolumn = "100" -- default
+
+            -- Set different column widths based on project
+            if string.find(cwd, "/rw/") then
+                virtcolumn = "120"
+            -- elseif string.find(cwd, "/my%-other%-project") then
+            --     virtcolumn = "80"
+            end
+
+            require("virt-column").setup({
+                char = "▕",
+                virtcolumn = virtcolumn,
+                highlight = "VirtColumn"
+            })
+        end,
+        -- opts = {
+        --     char = "▕" ,
+        --     virtcolumn = "100",
+        --     highlight = "VirtColumn"
+        -- }
     },
 
     {
@@ -45,7 +93,7 @@ return {
         opts = {},
     },
 
-    {
+    --[[{
         "yetone/avante.nvim",
         event = "VeryLazy",
         lazy = false,
@@ -114,7 +162,7 @@ return {
                 ft = { "Avante" },
             },
         },
-    },
+    },]]--
 
     {
         'tzachar/local-highlight.nvim',

@@ -26,6 +26,7 @@ vim.keymap.set('n', 'mp'        , require('recall').goto_prev, { desc = 'Recall 
 vim.keymap.set('n', '<Leader>mc', require('recall').clear, { desc = 'Recall clear' })
 vim.keymap.set('n', 'mc'        , require('recall').clear, { desc = 'Recall clear' })
 vim.keymap.del('n', '<Leader>q') -- Don't quit window
+vim.keymap.del('n', '<leader>o') -- Remove bindings that conflicts with OpenCode, that's not used anyway
 
 vim.o.updatetime = 400
 vim.o.autoread = true
@@ -47,6 +48,10 @@ vim.diagnostic.config({
 
 -- Color column
 vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#383230" })
+
+-- So gq and gw can be used to properly wrap comments
+vim.cmd("set formatexpr=")
+vim.cmd("set textwidth=100")
 
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")

@@ -21,6 +21,12 @@ return {
         filetypes = { "aspvbs" },
         extra_args = { "--parser", "html" },
       },
+      null_ls.builtins.formatting.prettier.with {
+        name = "prettier_php",
+        command = "/Users/patrik/kod/minso/rw/rw/node_modules/.bin/prettier",
+        filetypes = { "php" },
+        extra_args = { "--plugin", "/Users/patrik/kod/minso/rw/rw/node_modules/@prettier/plugin-php/standalone.js" },
+      },
     })
   end,
 }

@@ -30,7 +30,8 @@ return {
         "svelte-language-server",
         "lua-language-server",
         "rust-analyzer",
-        "intelephense"
+        "phpactor"
+        -- "intelephense"
       },
     },
   },
