@@ -33,19 +33,6 @@ vim.o.autoread = true
 vim.o.scrolloff = 8
 vim.cmd("packadd cfilter")
 
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = '●', -- or '●', '▎', or whatever symbol you prefer
-        spacing = 16,  -- Increase this number for more space
-        source = true,  -- Show source of diagnostic
-    },
-    float = {
-        border = "rounded",
-    },
-    underline = true,
-    severity_sort = true,
-})
-
 -- Color column
 vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#383230" })
 
@@ -63,8 +50,8 @@ vim.cmd("set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:bl
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = "#db4b4b", sp = "#ff0000", underline = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { underline = true })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#9b2b2b", italic = true })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#a06f28", italic = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#812424", italic = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#6a4b1a", italic = true })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0d6987", italic = true })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#007c5c", italic = true })
 
@@ -125,4 +112,3 @@ vim.api.nvim_set_hl(0, 'BufferInactiveBtn', { fg = '#333333', bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'BufferTabpagesSep', { fg = '#00ff00', bg = '#00ff00' })
 vim.api.nvim_set_hl(0, 'BufferTabpageFill', { bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'BufferTabpages', { fg = '#00ff00', bg = '#00ff00' })
-

@@ -8,6 +8,19 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    -- Configuration passed to `vim.diagnostic.config()`
+    -- All available options can be found with `:h vim.diagnostic.Opts`
+    diagnostics = {
+      virtual_text = {
+        prefix = "●",
+        spacing = 32,
+        source = true,
+      },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+    },
     autocmds = {
       alpha_autostart = false,
       restore_session = {
@@ -40,6 +53,7 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = false,
       cmp = true,
+      diagnostics = true,
       diagnostics_mode = 3, -- 0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on
       highlighturl = true,
       notifications = true,
@@ -60,6 +74,10 @@ return {
         ["c"] = { '"_c' , desc = "Change without yank" },
         ["C"] = { '"_C' , desc = "Change without yank" },
         ["<Leader>C"] = { 'ybk/<C-r>0<CR>N<CR>cgn' , desc = "Change current and following occurences" },
+        ["<Leader>gll"] = { "<cmd>GitLink<cr>", desc = "Yank git link (blob)" },
+        ["<Leader>glb"] = { "<cmd>GitLink blame<cr>", desc = "Yank git link (blame)" },
+        ["<Leader>glm"] = { "<cmd>GitLink default_branch<cr>", desc = "Yank git link (main)" },
+        ["<Leader>glc"] = { "<cmd>GitLink current_branch<cr>", desc = "Yank git link (current branch)" },
       },
       n = {
         ["-"] = { "/", desc = "Search forwards" },
@@ -112,9 +130,13 @@ return {
         ["X"] = { '"_X' , desc = "Delete without yank" },
         ["r"] = { '"_ciw', desc = 'Change inner word' },
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
-        ["<Leader>gb"] = { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" },
-        ["<Leader>gB"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
+        ["<Leader>gbl"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
         ["<Leader>gD"] = { "<C-w>h<cmd>q<cr>", desc = "Close diff view" },
+        ["<Leader>gll"] = { "<cmd>GitLink<cr>", desc = "Yank git link (blob)" },
+        ["<Leader>glb"] = { "<cmd>GitLink blame<cr>", desc = "Yank git link (blame)" },
+        ["<Leader>glm"] = { "<cmd>GitLink default_branch<cr>", desc = "Yank git link (main)" },
+        ["<Leader>glc"] = { "<cmd>GitLink current_branch<cr>", desc = "Yank git link (current branch)" },
+        ["<Leader>gG"] = { "<cmd>Telescope git_status<cr>", desc = "Git status (Telescope)" },
         ["<Leader>le"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })  end, desc = "Send diagnostic errors to quickfix" },
         ["<Leader>lw"] = { function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })  end, desc = "Send diagnostic warnings to quickfix" },
         ["<Leader>mf"] = { ":Telescope recall<cr>", desc = "Recall Telescope" },

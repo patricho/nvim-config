@@ -35,13 +35,6 @@ return {
     },
 
     {
-        "shaunsingh/nord.nvim",
-        config = function()
-            vim.g.nord_disable_background  = true
-        end
-    },
-
-    {
         "sainnhe/gruvbox-material",
         config = function()
             vim.g.gruvbox_material_enable_italic = true
@@ -159,39 +152,49 @@ return {
         priority = 1000,
         config = function()
             require("kanagawa").setup({
+                commentStyle = { italic = true },
                 transparent = true,
                 colors = {
-                    palette = {
-                        dragonBlack0 = "none",
-                        dragonBlack1 = "none",
-                        dragonBlack2 = "none",
-                        dragonBlack3 = "none",
-                        dragonBlack4 = "none",
-                        dragonBlack5 = "none",
-                        waveBlue1 = "none",
-                        waveBlue2 = "none",
-                    },
                     theme = {
-                        ui = {
-                            float = {
-                                bg = "none",
-                                bg_border = "none",
+                        all = {
+                            syn = {
+                                comment = "#5a5755",
+                                operator = "#7a7775", -- plus minus equals
+                                punct = "#7a7775", -- parentheses, punctuation
                             },
-                            pmenu = {
-                                bg = "none",
-                                bg_sel = "none",
-                                bg_sbar = "none",
-                                bg_thumb = "none",
-                            },
+                            ui = {
+                                float = {
+                                    bg = "none",
+                                    bg_border = "none",
+                                    fg_border  = "#494644",
+                                },
+                                pmenu = {
+                                    bg = "none",
+                                    bg_sel = "none",
+                                    bg_sbar = "none",
+                                    bg_thumb = "none",
+                                },
+                                bg_p2      = "#181715", -- cursorline background
+                                bg_visual  = "#662200", -- selection background
+                                nontext    = "#5a5755",
+                                special    = "#4a4745",
+                                whitespace = "#383230",
+                                bg_gutter = "none", -- remove gutter background
+                            }
+                        },
+                        wave = {
+                            ui = {
+                                bg_p2      = "#181715", -- cursorline background
+                                bg_visual  = "#662200", -- selection background
+                            }
                         },
                         dragon = {
                             ui = {
                                 bg_p2      = "#181715", -- cursorline background
                                 bg_visual  = "#662200", -- selection background
-
                                 nontext    = "#5a5755", -- line numbers etc
                                 special    = "#494644", -- current indentation vertical lines
-                                whitespace = "#2a2724", -- indendation vertical lines
+                                whitespace = "#2a2724", -- indentation vertical lines
                             }
                         }
                     }
