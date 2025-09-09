@@ -82,7 +82,7 @@ return {
             local section = { "", "" }
 
             opts.statusline = {
-                hl = { fg = "fg", bg = "#000000" },
+                hl = { fg = "fg", bg = "#1f1a18" },
                 status.component.mode({ mode_text = { hl = { fg = "#000000" }, padding = { left = 1, right = 1 } }, surround = { separator = { "", "" } } }),
                 status.component.git_branch({ git_branch = { padding = { left = 1, right = 1 }, hl = { bg = "#211e1c" } }, surround = { color = "#211e1c", separator = section } }),
                 status.component.git_diff({ surround = { separator = section, color = "#211e1c" }, padding = { right = 1 } }),
@@ -150,20 +150,20 @@ return {
                     -- show the path to the file relative to the working directory
                     status.component.separated_path({
                         path_func = status.provider.filename({ modify = ":.:h" }),
-                        hl = { fg = '#666666' },
+                        hl = { fg = '#666666', bg = 'NONE' },
                     }),
 
                     -- add the file name and icon
                     status.component.file_info({ -- add file_info to breadcrumbs
                         file_icon = {
-                            hl = { fg = "#333333" },
+                            hl = { fg = "#333333", bg = 'NONE' },
                             padding = { left = 0 },
                         },
                         filename = {},
                         filetype = false,
                         file_modified = false,
                         file_read_only = false,
-                        hl = { fg = "#888888" },
+                        hl = { fg = "#888888", bg = 'NONE' },
                         surround = false,
                         update = "BufEnter",
                     }),
@@ -171,15 +171,15 @@ return {
                     -- show the breadcrumbs
                     status.component.breadcrumbs({
                         icon = { fg = '#333333' },
-                        hl = { fg = '#666666' }, --status.hl.get_attributes("winbar"),
+                        hl = { fg = '#666666', bg = 'NONE' }, --status.hl.get_attributes("winbar"),
                         prefix = true,
                         padding = { left = 0 },
                     }),
 
-                    -- -- background left over
-                    -- status.component.fill({
-                    --     hl = { bg = "#000000" }
-                    -- }),
+                    -- background left over
+                    status.component.fill({
+                        hl = { bg = "NONE" }
+                    }),
                 },
             }
         end,

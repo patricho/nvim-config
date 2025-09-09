@@ -158,6 +158,19 @@ return {
       -- end
       --
       -- require("lspconfig")[server].setup(server_opts)
+
+      -- HACK: Override AstroNvim's shenanigans on each attach
+      vim.diagnostic.config({
+        virtual_text = {
+          prefix = "●",
+          spacing = 32,
+          source = true,
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+      })
     end,
   },
 }

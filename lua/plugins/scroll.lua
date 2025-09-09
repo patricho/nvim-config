@@ -51,13 +51,11 @@ return {
                 marks = {
                     Search = { color = "#d70000" },
                     Error = { color = "#d70000" },
-                    Warn = { color = "#c08f48" },
-                    Info = { color = "#1d79b7" },
-                    Hint = { color = "#1abc9c" },
+                    Warn = { color = "#c08f48", text = { " ", " " } }, -- Set to space to "disable" this mark,
+                    Info = { color = "#1d79b7", text = { " ", " " } },
+                    Hint = { color = "#1abc9c", text = { " ", " " } },
                     Misc = { color = "#ffa029" },
-                    GitDelete = {
-                        text = "┆",
-                    },
+                    GitDelete = { text = "┆" },
                 },
                 autocmd = {
                     render = {

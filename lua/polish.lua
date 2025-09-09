@@ -43,7 +43,7 @@ vim.cmd("set textwidth=100")
 -- Cursor colors and behavior
 vim.cmd("highlight Cursor guibg=#ffcf88 ctermbg=67")
 vim.cmd("highlight iCursor guibg=#ffff00 ctermbg=229")
-vim.cmd("highlight rCursor guibg=#d70000 ctermbg=124")
+vim.cmd("highlight rCursor guibg=#d73333 ctermbg=124")
 vim.cmd("set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,i:blinkwait1000-blinkon500-blinkoff250")
 
 -- Diagnostic colors
@@ -59,16 +59,16 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#007c5c", italic = t
 vim.api.nvim_set_hl(0, "HeirlineNormal", { fg = "#000000", bg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "HeirlineInsert", { fg = "#000000", bg = "#a6e3a1" })
 vim.api.nvim_set_hl(0, "HeirlineVisual", { fg = "#000000", bg = "#fe8019" })
-vim.api.nvim_set_hl(0, "HeirlineReplace", { fg = "#ffffff", bg = "#d70000" })
+vim.api.nvim_set_hl(0, "HeirlineReplace", { fg = "#ffffff", bg = "#d73333" })
 
 vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#fe8019", bg ="#500f08" })
 vim.api.nvim_set_hl(0, "LocalHighlight", { bg ="#702020" })
 vim.api.nvim_set_hl(0, "NotifyBackground", { bg ="#000000" })
 
 -- Search colors
-vim.api.nvim_set_hl(0, "Search", { fg = '#d70000' })
-vim.api.nvim_set_hl(0, "CurSearch", { fg = '#d70000', bold = true })
-vim.api.nvim_set_hl(0, "HlSearchNear", { fg = '#d70000', bold = true })
+vim.api.nvim_set_hl(0, "Search", { fg = '#d73333' })
+vim.api.nvim_set_hl(0, "CurSearch", { fg = '#d73333', bold = true })
+vim.api.nvim_set_hl(0, "HlSearchNear", { fg = '#d73333', bold = true })
 vim.api.nvim_set_hl(0, "HlSearchLens", { fg = "#777777" })
 vim.api.nvim_set_hl(0, "HlSearchLensNear", { fg = "#aaaaaa" })
 
@@ -103,12 +103,17 @@ vim.api.nvim_set_hl(0, 'BufferCurrentBtn', { fg = '#555555', bg = '#282828' })
 vim.api.nvim_set_hl(0, 'BufferCurrentADDED', { fg = '#238636', bg = '#282828' })
 vim.api.nvim_set_hl(0, 'BufferCurrentCHANGED', { fg = '#bd561d', bg = '#282828' })
 vim.api.nvim_set_hl(0, 'BufferCurrentDELETED', { fg = '#da3633', bg = '#282828' })
-vim.api.nvim_set_hl(0, 'BufferCurrentERROR', { fg = '#d72222', bg = '#282828' })
+vim.api.nvim_set_hl(0, 'BufferCurrentERROR', { fg = '#d73333', bg = '#282828' })
 vim.api.nvim_set_hl(0, 'BufferCurrentSign', { fg = '#282828', bg = '#282828' })
-vim.api.nvim_set_hl(0, 'BufferInactiveSign', { fg = '#282828', bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'BufferInactive', { fg = '#666666', bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'BufferInactiveMod', { fg = '#666666', bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'BufferInactiveBtn', { fg = '#333333', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'BufferInactiveSign', { fg = '#282828', bg = '#1f1a18' })
+vim.api.nvim_set_hl(0, 'BufferInactive', { fg = '#666666', bg = '#1f1a18' })
+vim.api.nvim_set_hl(0, 'BufferInactiveMod', { fg = '#666666', bg = '#1f1a18' })
+vim.api.nvim_set_hl(0, 'BufferInactiveBtn', { fg = '#333333', bg = '#1f1a18' })
 vim.api.nvim_set_hl(0, 'BufferTabpagesSep', { fg = '#00ff00', bg = '#00ff00' })
-vim.api.nvim_set_hl(0, 'BufferTabpageFill', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'BufferTabpageFill', { bg = '#1f1a18' })
 vim.api.nvim_set_hl(0, 'BufferTabpages', { fg = '#00ff00', bg = '#00ff00' })
+
+-- Telescope picker
+-- vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#d73333", bold = true })

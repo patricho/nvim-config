@@ -1,6 +1,76 @@
 ---@type LazySpec
 return {
     {
+        "thesimonho/kanagawa-paper.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent = true,
+            colors = {
+                theme = {
+                    ink = {
+                        syn = {
+			                attribute = '#DCD7BA', -- html attributes
+                            comment = "#666362", -- plus, minus, equals
+                            operator = "#7a7775", -- plus, minus, equals
+                            punct = "#7a7775", -- parentheses, punctuation
+
+                            deprecated = "#ff4500",
+                            symbol = "#ff0000",
+                            special2 = "#06e60a",
+
+			                -- All available syntax properties:
+
+			                -- attribute = palette.dragonYellow, -- html attributes
+			                -- comment = palette.fujiGray,
+			                -- constant = palette.dragonOrange,
+			                -- deprecated = palette.katanaGray,
+			                -- fun = palette.dragonBlue2, -- function, method
+			                -- identifier = palette.dragonYellow, -- class property
+			                -- keyword = palette.dragonPink, -- language keyword
+			                -- member = palette.dragonRed, -- class
+			                -- number = palette.dragonPink,
+			                -- operator = palette.dragonRed, -- plus, minus, equals
+			                -- parameter = palette.dragonGray, -- function parameter
+			                -- preproc = palette.dragonRed, -- package, import, use, require
+			                -- punct = palette.dragonGray2, -- parentheses, punctuation
+			                -- regex = palette.dragonRed,
+			                -- statement = palette.dragonViolet, -- statusline git
+			                -- string = palette.dragonGreen2,
+			                -- symbol = palette.dragonRed,
+			                -- type = palette.dragonAqua, -- type names
+			                -- variable = "none",
+			                -- special1 = palette.dragonYellow, -- type names, html tags
+			                -- special2 = palette.dragonRed,
+			                -- special3 = palette.springViolet1, -- links
+                        },
+                        ui = {
+                            float = {
+                                bg = "none",
+                                bg_border = "none",
+                                fg_border  = "#494644",
+                            },
+                            pmenu = {
+                                bg = "none",
+                                bg_sel = "none",
+                                bg_sbar = "none",
+                                bg_thumb = "none",
+                            },
+                            bg_cursorline      = "#1f1a18", -- cursorline background
+                            bg_visual  = "#662200", -- selection background
+                            nontext    = "#4a4745", -- line numbers
+                            special    = "#676664", -- active indent line, etc
+                            whitespace = "#3832f0", -- ???
+                            indent = "#343230", -- indent line
+                            indent_scope  = "#67f6f4", -- ???
+                        }
+                    }
+                }
+            }
+        },
+    },
+
+    {
         "metalelf0/black-metal-theme-neovim",
         lazy = false,
         priority = 1000,
