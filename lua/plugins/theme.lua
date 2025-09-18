@@ -16,7 +16,7 @@ return {
                             punct = "#7a7775", -- parentheses, punctuation
 
                             deprecated = "#ff4500",
-                            symbol = "#ff0000",
+                            symbol = "#bbbbbb",
                             special2 = "#06e60a",
 
 			                -- All available syntax properties:
@@ -37,7 +37,7 @@ return {
 			                -- regex = palette.dragonRed,
 			                -- statement = palette.dragonViolet, -- statusline git
 			                -- string = palette.dragonGreen2,
-			                -- symbol = palette.dragonRed,
+			                -- symbol = palette.dragonRed, -- html attribute values etc
 			                -- type = palette.dragonAqua, -- type names
 			                -- variable = "none",
 			                -- special1 = palette.dragonYellow, -- type names, html tags

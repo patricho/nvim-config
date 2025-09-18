@@ -131,6 +131,7 @@ return {
         ["r"] = { '"_ciw', desc = 'Change inner word' },
         ["R"] = { '"_ciW', desc = 'Change inner Word' },
         ["<Leader>gbl"] = { function() vim.cmd("GitBlameToggle") end, desc = "Toggle Git line blame" },
+        ["<Leader>gbB"] = { function() vim.cmd("BlameToggle") end, desc = "Open Git blame window" },
         ["<Leader>gD"] = { "<C-w>h<cmd>q<cr>", desc = "Close diff view" },
         ["<Leader>gll"] = { "<cmd>GitLink<cr>", desc = "Yank git link (blob)" },
         ["<Leader>glb"] = { "<cmd>GitLink blame<cr>", desc = "Yank git link (blame)" },

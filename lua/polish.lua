@@ -96,6 +96,16 @@ vim.api.nvim_set_hl(0, 'GitSignsChange',           { fg = '#466570' })
 -- vim.api.nvim_set_hl(0, 'ScrollbarGitChange',       { fg = '#466570' })
 -- vim.api.nvim_set_hl(0, 'ScrollbarGitChangeHandle', { fg = '#466570', bg = '#444444' })
 
+-- NeoTree files
+vim.api.nvim_set_hl(0, 'NeoTreeGitAdded',     { fg = '#5db85e' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitStaged',    { fg = '#5db85e' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitDeleted',   { fg = '#962623' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitConflict',  { fg = '#962623' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitRenamed',   { fg = '#ed965d' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitModified',  { fg = '#ed965d' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitUnstaged',  { fg = '#b6b5c0' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitUntracked', { fg = '#b6b5c0' })
+
 -- Barbar tabline
 vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = '#bbbbbb', bg = '#282828', bold = true })
 vim.api.nvim_set_hl(0, 'BufferCurrentMod', { fg = '#bbbbbb', bg = '#282828', bold = true })
