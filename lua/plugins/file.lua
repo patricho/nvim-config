@@ -53,16 +53,16 @@ return {
             opts.window.mappings["o"] = "open_all"
 
             -- Workaround for an apparent bug in neo-tree that doesn't detect commands in visual mode initially
-            opts.event_handlers = opts.event_handlers or {}
-            table.insert(opts.event_handlers, {
-                event = "neo_tree_buffer_enter",
-                handler = function()
-                    -- Trigger WinEnter to set restored_after_window_change = true
-                    vim.defer_fn(function()
-                        vim.cmd("doautocmd WinEnter")
-                    end, 1000)
-                end,
-            })
+            -- opts.event_handlers = opts.event_handlers or {}
+            -- table.insert(opts.event_handlers, {
+            --     event = "neo_tree_buffer_enter",
+            --     handler = function()
+            --         -- Trigger WinEnter to set restored_after_window_change = true
+            --         vim.defer_fn(function()
+            --             vim.cmd("doautocmd WinEnter")
+            --         end, 1000)
+            --     end,
+            -- })
             return opts
         end,
     },
