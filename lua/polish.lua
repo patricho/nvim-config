@@ -21,7 +21,6 @@ vim.keymap.set("n", "<Leader>mm", require("recall").toggle, { desc = "Recall tog
 vim.keymap.set("n", "mm", require("recall").toggle, { desc = "Recall toggle" })
 vim.keymap.set("n", "<Leader>mn", require("recall").goto_next, { desc = "Recall next" })
 vim.keymap.set("n", "mn", require("recall").goto_next, { desc = "Recall next" })
-vim.keymap.set("n", "<C-m>", require("recall").goto_next, { desc = "Recall next" })
 vim.keymap.set("n", "<Leader>mp", require("recall").goto_prev, { desc = "Recall previous" })
 vim.keymap.set("n", "mp", require("recall").goto_prev, { desc = "Recall previous" })
 vim.keymap.set("n", "<Leader>mc", require("recall").clear, { desc = "Recall clear" })

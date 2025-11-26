@@ -1,6 +1,11 @@
 ---@type LazySpec
 return {
     {
+        "esmuellert/vscode-diff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+    },
+
+    {
         "FabijanZulj/blame.nvim",
         lazy = false,
         config = function()
@@ -90,7 +95,7 @@ return {
                     gitsigns.blame_line({ full = true })
                 end, 'GitSigns: View line blame')
 
-                map('n', '<leader>gd', gitsigns.diffthis, 'GitSigns: Diff this')
+                map('n', '<leader>gds', gitsigns.diffthis, 'GitSigns: Diff current buffer')
 
                 -- map('n', '<leader>gD', function()
                 --     gitsigns.diffthis('~')

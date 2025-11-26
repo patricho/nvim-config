@@ -192,13 +192,13 @@ return {
                 },
 
                 sorting = {
-                    priority_weight = 2,
+                    priority_weight = 100,
                     comparators = {
-                        compare.scopes,
                         compare.score,
+                        compare.exact,
+                        compare.scopes,
                         compare.locality,
                         compare.offset,
-                        compare.exact,
                         compare.recently_used,
                         compare.kind,
                         compare.sort_text,
@@ -206,12 +206,6 @@ return {
                         compare.order,
                     },
                 },
-
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'buffer' },
-                    { name = 'luasnip' },
-                }),
 
                 window = {
                     completion = cmp.config.window.bordered(),
@@ -235,10 +229,12 @@ return {
                     end
                 },
 
-                -- -- Configure source priorities (higher number = higher priority)
-                -- sources = cmp.config.sources({
-                --     { name = 'nvim_lsp', priority = 1000, max_item_count = 50 },
-                -- }),
+                -- Configure source priorities (higher number = higher priority)
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp', priority = 800, max_item_count = 20 },
+                    { name = 'luasnip', priority = 400, max_item_count = 10 },
+                    { name = 'buffer', priority = 100, max_item_count = 20 },
+                }),
 
                 docs = {
                     max_height = 40,
