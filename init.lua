@@ -15,6 +15,10 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+-- To allow .nvim.lua in project directories
+vim.o.exrc = true
+vim.o.secure = true
+
 require "autocmds"
 require "lazy_setup"
 require "vimscripts"

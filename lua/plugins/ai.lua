@@ -45,13 +45,13 @@ return {
         },
         keys = {
             -- TODO: Move to polish.lua
-            { '<leader>oa', function() require('opencode').ask() end, desc = 'Ask opencode', },
-            { '<leader>aa', function() require('opencode').ask() end, desc = 'Ask opencode', },
+            { '<leader>oa', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode', },
+            { '<leader>aa', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode', },
             { '<leader>ob', function() require('opencode').ask('@buffer: ') end, desc = 'Ask opencode about buffer', mode = 'n', },
             { '<leader>oB', function() require('opencode').ask('@buffers: ') end, desc = 'Ask opencode about open buffers', mode = 'n', },
-            { '<leader>oc', function() require('opencode').ask('@cursor: ') end, desc = 'Ask opencode about this', mode = 'n', },
-            { '<leader>oa', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
-            { '<leader>ae', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+            { '<leader>oc', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode about this', mode = 'n', },
+            { '<leader>oa', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+            { '<leader>ae', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode about selection', mode = 'v', },
             { '<leader>ot', function() require('opencode').toggle() end, desc = 'Toggle embedded opencode', },
             { '<leader>on', function() require('opencode').command('session_new') end, desc = 'New session', },
             { '<leader>oy', function() require('opencode').command('messages_copy') end, desc = 'Copy last message', },
