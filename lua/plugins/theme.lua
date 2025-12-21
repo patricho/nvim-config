@@ -1,6 +1,48 @@
 ---@type LazySpec
 return {
     {
+        "wtfox/jellybeans.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent = true,
+        },
+    },
+
+    {
+        "sainnhe/gruvbox-material",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_background = "soft"
+            vim.g.gruvbox_material_transparent_background = 1
+            -- vim.g.gruvbox_material_colors_override = {
+            --     -- bg0 = {'#1d2021', '234'},
+            --     -- bg1 = {'#1f1a18', '234'},
+            --     -- bg2 = {'#282828', '235'},
+            --     -- bg3 = {'#662200', '59'},
+            --     -- bg4 = {'#f6f200', '59'},
+            --     -- bg5 = {'#343230', '59'},
+            --     -- bg_statusline1 = {'#f43230', '59'},
+            --     -- bg_statusline2 = {'#24f230', '59'},
+            --     -- bg_statusline3 = {'#2432f0', '59'},
+            --     -- grey0 = {'#4a4745', '59'},
+            --     -- grey1 = {'#5a5755', '59'},
+            --     -- grey2 = {'#7a5755', '59'},
+            -- }
+        end
+    },
+
+    --[[ {
+        'abhilash26/mapledark.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+        end,
+    },
+
+    {
         "thesimonho/kanagawa-paper.nvim",
         lazy = false,
         priority = 1000,
@@ -100,15 +142,6 @@ return {
                     transparent = true,
                 }
             })
-        end
-    },
-
-    {
-        "sainnhe/gruvbox-material",
-        config = function()
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_background = "soft"
-            vim.g.gruvbox_material_transparent_background = 1
         end
     },
 
@@ -270,5 +303,5 @@ return {
                 }
             })
         end
-    },
+    }, ]]
 }

@@ -1,6 +1,10 @@
 ---@type LazySpec
 return {
     {
+        'simrat39/rust-tools.nvim',
+    },
+
+    {
         "sphamba/smear-cursor.nvim",
         opts = {
             -- Snappier cursor                    -- Default  Range

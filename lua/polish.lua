@@ -59,6 +59,7 @@ end, { desc = "Yank buffer's absolute path with line range" })
 vim.o.updatetime = 400
 vim.o.autoread = true
 vim.o.scrolloff = 8
+vim.o.cmdheight = 0
 vim.cmd "packadd cfilter"
 
 -- Color column
