@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   opts = {
     incremental_selection = {
       enable = false, -- use textobjects
