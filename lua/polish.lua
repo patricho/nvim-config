@@ -28,6 +28,16 @@ vim.keymap.set("n", "mc", require("recall").clear, { desc = "Recall clear" })
 vim.keymap.del("n", "<Leader>q") -- Don't quit window
 vim.keymap.del("n", "<leader>o") -- Remove bindings that conflicts with OpenCode, that's not used anyway
 
+vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<C-h>", "<cmd>Treewalker Left<cr>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Treewalker Right<cr>", { silent = true })
+
+vim.keymap.set("n", "<C-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
+vim.keymap.set("n", "<C-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
+vim.keymap.set("n", "<C-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
+vim.keymap.set("n", "<C-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
+
 vim.keymap.set("n", "<Leader>ypr", "<cmd>:let @+=expand('%:.')<cr>", { desc = "Yank buffer's relative path" })
 vim.keymap.set("n", "<Leader>ypa", "<cmd>:let @+=expand('%:p')<cr>", { desc = "Yank buffer's absolute path" })
 vim.keymap.set("v", "<Leader>ypr", function()
@@ -42,7 +52,6 @@ vim.keymap.set("v", "<Leader>ypr", function()
   vim.fn.setreg("+", result)
   vim.notify("Yanked: " .. result)
 end, { desc = "Yank buffer's relative path with line range" })
-
 vim.keymap.set("v", "<leader>ypa", function()
   local absolute_path = vim.fn.expand "%:p"
   local start_line = vim.fn.line "v"

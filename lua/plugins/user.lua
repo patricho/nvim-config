@@ -1,6 +1,14 @@
 ---@type LazySpec
 return {
     {
+        'aaronik/treewalker.nvim',
+        opts = {
+            highlight_duration = 1000,
+            highlight_group = 'YankHighlight'
+        }
+    },
+
+    {
         'simrat39/rust-tools.nvim',
     },
 
