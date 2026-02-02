@@ -28,15 +28,15 @@ vim.keymap.set("n", "mc", require("recall").clear, { desc = "Recall clear" })
 vim.keymap.del("n", "<Leader>q") -- Don't quit window
 vim.keymap.del("n", "<leader>o") -- Remove bindings that conflicts with OpenCode, that's not used anyway
 
-vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<C-h>", "<cmd>Treewalker Left<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Treewalker Right<cr>", { silent = true })
-
-vim.keymap.set("n", "<C-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
-vim.keymap.set("n", "<C-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
-vim.keymap.set("n", "<C-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
-vim.keymap.set("n", "<C-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
+-- vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
+-- vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
+-- vim.keymap.set({ "n", "v" }, "<C-h>", "<cmd>Treewalker Left<cr>", { silent = true })
+-- vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Treewalker Right<cr>", { silent = true })
+--
+-- vim.keymap.set("n", "<C-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
+-- vim.keymap.set("n", "<C-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
+-- vim.keymap.set("n", "<C-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
+-- vim.keymap.set("n", "<C-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
 
 vim.keymap.set("n", "<Leader>ypr", "<cmd>:let @+=expand('%:.')<cr>", { desc = "Yank buffer's relative path" })
 vim.keymap.set("n", "<Leader>ypa", "<cmd>:let @+=expand('%:p')<cr>", { desc = "Yank buffer's absolute path" })
@@ -106,9 +106,11 @@ vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
 -- Search colors
 vim.api.nvim_set_hl(0, "Search", { fg = "#d73333" })
 vim.api.nvim_set_hl(0, "CurSearch", { fg = "#d73333", bold = true })
+vim.api.nvim_set_hl(0, "IncSearch", { fg = "#d73333", bg = "#444444", bold = true })
 vim.api.nvim_set_hl(0, "HlSearchNear", { fg = "#d73333", bold = true })
 vim.api.nvim_set_hl(0, "HlSearchLens", { fg = "#777777" })
 vim.api.nvim_set_hl(0, "HlSearchLensNear", { fg = "#aaaaaa" })
+vim.api.nvim_set_hl(0, "Substitute", { fg = "#ffff00" })
 
 -- Current symbol LSP highlight colors
 vim.api.nvim_set_hl(0, "LspReferenceText", { fg = "#fe8019" })
