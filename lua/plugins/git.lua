@@ -43,9 +43,23 @@ return {
     },
 
     {
-        "linrongbin16/gitlinker.nvim",
-        cmd = "GitLink",
-        opts = {},
+        "ruifm/gitlinker.nvim",
+        config = function()
+            require('gitlinker').setup {
+                callbacks = {
+                    ["github.com"] = require"gitlinker.hosts".get_github_type_url,
+                    ["bitbucket.org"] = require"gitlinker.hosts".get_bitbucket_type_url,
+                    ["patrik_bauhn"] = function(url_data)
+                        local url = "https://bitbucket.org/" .. url_data.repo .. "/src/" .. url_data.rev .. "/" .. url_data.file
+                        if url_data.lstart then
+                            url = url .. "#lines-" .. url_data.lstart
+                            if url_data.lend then url = url .. ":" .. url_data.lend end
+                        end
+                        return url
+                    end,
+                },
+            }
+        end,
     },
 
     {
